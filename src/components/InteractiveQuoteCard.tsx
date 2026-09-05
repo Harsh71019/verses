@@ -1,9 +1,11 @@
-import { forwardRef } from 'react'
+import { forwardRef, useMemo } from 'react'
 import type { PointerEvent as ReactPointerEvent } from 'react'
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
 import type { PanInfo, Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import type { Mood } from '../lib/moods'
+import { analyzeQuoteWords } from '../lib/wordEmphasis'
+import type { WordMotionPreset } from '../lib/wordEmphasis'
 import type { Quote } from '../types'
 import SemanticElements from './SemanticElements'
 
@@ -38,13 +40,33 @@ const cardVariants: Variants = {
       },
 }
 
+interface WordAnimationData {
+  index: number
+  motion: WordMotionPreset
+}
+
+const WORD_STARTS: Record<WordMotionPreset, Record<string, string | number>> = {
+  rise: { y: '120%', rotate: 3 },
+  drop: { y: '-105%', rotate: -3 },
+  slide: { x: '-0.7em', y: '18%', rotate: -7 },
+  pivot: { y: '70%', rotate: 14, scale: 0.78 },
+  focus: { y: '18%', scale: 1.3, filter: 'blur(12px)' },
+  pop: { y: '24%', rotate: -5, scale: 0.28 },
+}
+
 const wordVariants: Variants = {
-  hidden: { y: '115%', rotate: 3, opacity: 0 },
-  visible: (index: number) => ({
+  hidden: ({ motion: motionPreset }: WordAnimationData) => ({
+    ...WORD_STARTS[motionPreset],
+    opacity: 0,
+  }),
+  visible: ({ index }: WordAnimationData) => ({
+    x: 0,
     y: '0%',
     rotate: 0,
+    scale: 1,
+    filter: 'blur(0px)',
     opacity: 1,
-    transition: { duration: 0.7, delay: 0.16 + index * 0.027, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.72, delay: 0.14 + index * 0.026, ease: [0.16, 1, 0.3, 1] },
   }),
 }
 
@@ -78,7 +100,11 @@ export const InteractiveQuoteCard = forwardRef<HTMLDivElement, InteractiveQuoteC
     const smoothY = useSpring(pointerY, { stiffness: 120, damping: 22 })
     const rotateY = useTransform(smoothX, [-0.5, 0.5], [-1.2, 1.2])
     const rotateX = useTransform(smoothY, [-0.5, 0.5], [1.2, -1.2])
-    const words = quote.quote.split(' ')
+    const prefersReducedMotion = useReducedMotion()
+    const words = useMemo(
+      () => analyzeQuoteWords(quote.quote, quote.id, mood.id),
+      [mood.id, quote.id, quote.quote],
+    )
 
     const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
       const bounds = event.currentTarget.getBoundingClientRect()
@@ -134,8 +160,23 @@ export const InteractiveQuoteCard = forwardRef<HTMLDivElement, InteractiveQuoteC
               <p aria-hidden="true">
                 {words.map((word, index) => (
                   <span className="word-mask" key={`${quote.id}-${index}`}>
-                    <motion.span custom={index} variants={wordVariants} initial="hidden" animate="visible">
-                      {word}{index < words.length - 1 ? '\u00a0' : ''}
+                    <motion.span
+                      className="quote-word-reveal"
+                      custom={{ index, motion: word.motion } satisfies WordAnimationData}
+                      variants={wordVariants}
+                      initial={prefersReducedMotion ? false : 'hidden'}
+                      animate="visible"
+                    >
+                      <motion.span
+                        className={`quote-word${word.isStrongest ? ' quote-word-hero' : ''}`}
+                        data-emphasis={word.isStrongest ? 'strongest' : undefined}
+                        animate={prefersReducedMotion || !word.isStrongest
+                          ? undefined
+                          : { scale: [1, 1.1, 1], y: [0, -4, 0] }}
+                        transition={{ duration: 0.68, delay: 0.6 + index * 0.026, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        {word.raw}{index < words.length - 1 ? '\u00a0' : ''}
+                      </motion.span>
                     </motion.span>
                   </span>
                 ))}

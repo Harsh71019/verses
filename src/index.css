@@ -516,12 +516,46 @@ button:focus-visible {
   display: inline-flex;
   overflow: hidden;
   padding-bottom: 0.07em;
+  perspective: 500px;
   vertical-align: bottom;
 }
 
 .word-mask > span {
   display: inline-block;
   transform-origin: left bottom;
+}
+
+.quote-word {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.quote-word-hero {
+  z-index: 1;
+  color: var(--hero-word, var(--mood-accent));
+  text-shadow: 0 0 0.32em color-mix(in srgb, var(--hero-word, var(--mood-accent)) 24%, transparent);
+}
+
+.quote-word-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 0.05em;
+  bottom: 0.015em;
+  left: -0.025em;
+  height: 0.075em;
+  background: currentColor;
+  box-shadow: 0 0 0.14em currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: hero-word-lock 0.62s 0.86s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hero-word-lock {
+  0% { opacity: 0; transform: scaleX(0); }
+  55% { opacity: 0.8; transform: scaleX(1.08); }
+  100% { opacity: 0.52; transform: scaleX(1); }
 }
 
 .quote-copy footer {
@@ -694,6 +728,7 @@ button:focus-visible {
 
 /* DRIVE — kinetic sports poster */
 .quote-stage-drive {
+  --hero-word: #dfff38;
   border: 1px solid rgba(255, 243, 232, 0.22);
   border-radius: 0.25rem;
   background: linear-gradient(105deg, rgba(255, 86, 52, 0.14), transparent 34%), #151312;
@@ -765,6 +800,7 @@ button:focus-visible {
 
 /* CALM — spacious Japanese-inflected editorial */
 .quote-stage-calm {
+  --hero-word: #397f7d;
   border: 1px solid rgba(21, 61, 65, 0.16);
   border-radius: 2.8rem;
   background: rgba(230, 240, 235, 0.88);
@@ -828,6 +864,7 @@ button:focus-visible {
 
 /* GRIT — worn field journal */
 .quote-stage-grit {
+  --hero-word: #db6b36;
   border: 1px solid rgba(237, 223, 198, 0.24);
   border-radius: 0;
   background: linear-gradient(100deg, rgba(219, 107, 54, 0.08), transparent 30%), #24231f;
@@ -888,6 +925,7 @@ button:focus-visible {
 
 /* JOY — cut-paper optimism */
 .quote-stage-joy {
+  --hero-word: #fff29a;
   border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 2.4rem 5.8rem 3rem 4.8rem;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.09), transparent 42%), #5946d2;
@@ -934,6 +972,7 @@ button:focus-visible {
 
 /* REVENGE — cinematic noir, transformed into comeback energy */
 .quote-stage-revenge {
+  --hero-word: #ff2d2d;
   border: 1px solid rgba(255, 45, 45, 0.4);
   border-radius: 0;
   background: radial-gradient(circle at 82% 46%, rgba(255, 45, 45, 0.16), transparent 28%), #0a0909;
@@ -1003,6 +1042,7 @@ button:focus-visible {
 
 /* HARD WORK — living blueprint / workshop drawing */
 .quote-stage-hardwork {
+  --hero-word: #ffd43b;
   border: 1px solid rgba(220, 234, 255, 0.38);
   border-radius: 0.3rem;
   background-color: #0d49a1;
@@ -1034,6 +1074,7 @@ button:focus-visible {
 
 /* FOCUS — optical instrument, with all noise pulled into one point */
 .quote-stage-focus {
+  --hero-word: #68f4df;
   border: 1px solid rgba(104, 244, 223, 0.29);
   border-radius: 50% / 7%;
   background: radial-gradient(circle at 74% 50%, rgba(104, 244, 223, 0.09), transparent 24%), #111020;
