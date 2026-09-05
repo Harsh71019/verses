@@ -562,6 +562,136 @@ button:focus-visible {
   width: 38%;
 }
 
+/* Quote-aware visual language: words become animated symbols and signals. */
+.semantic-layer {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  color: var(--mood-accent);
+  pointer-events: none;
+}
+
+.semantic-visual {
+  position: absolute;
+  right: clamp(5rem, 8vw, 9rem);
+  top: 50%;
+  width: clamp(13rem, 28vw, 29rem);
+  aspect-ratio: 1;
+  translate: 0 -50%;
+}
+
+.semantic-glyph {
+  position: absolute;
+  inset: 15%;
+  display: grid;
+  place-items: center;
+  opacity: 0.11;
+}
+
+.semantic-glyph svg {
+  width: 100%;
+  height: 100%;
+}
+
+.semantic-orbit {
+  position: absolute;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.16;
+}
+
+.semantic-orbit-outer { inset: 0; }
+.semantic-orbit-inner { inset: 12%; border-style: dashed; }
+
+.semantic-orbit i {
+  position: absolute;
+  top: 50%;
+  left: -0.22rem;
+  width: 0.44rem;
+  height: 0.44rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 18px currentColor;
+}
+
+.semantic-orbit i:nth-child(2) {
+  top: 14%;
+  right: 12%;
+  left: auto;
+  width: 0.26rem;
+  height: 0.26rem;
+}
+
+.semantic-signals {
+  position: absolute;
+  right: clamp(5.8rem, 8vw, 9rem);
+  bottom: clamp(1.55rem, 3.5vw, 3.6rem);
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  max-width: min(48vw, 38rem);
+}
+
+.semantic-signal-line {
+  width: clamp(1.2rem, 3.6vw, 3.8rem);
+  height: 1px;
+  flex: 0 0 auto;
+  background: currentColor;
+  opacity: 0.42;
+  transform-origin: right center;
+}
+
+.semantic-signal-chip {
+  display: inline-flex;
+  min-height: 1.8rem;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.34rem 0.52rem;
+  border: 1px solid color-mix(in srgb, currentColor 36%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.semantic-signal-chip svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: 0 0 auto;
+}
+
+.semantic-signal-chip small {
+  padding-left: 0.38rem;
+  border-left: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  font: inherit;
+  opacity: 0.48;
+}
+
+.quote-stage-drive .semantic-signal-chip,
+.quote-stage-grit .semantic-signal-chip,
+.quote-stage-revenge .semantic-signal-chip,
+.quote-stage-hardwork .semantic-signal-chip {
+  border-radius: 0;
+}
+
+.quote-stage-calm .semantic-visual {
+  right: auto;
+  left: 8%;
+  opacity: 0.7;
+}
+
+.quote-stage-joy .semantic-visual { rotate: 9deg; }
+.quote-stage-joy .semantic-signal-chip:nth-child(3) { rotate: -3deg; }
+.quote-stage-joy .semantic-signal-chip:nth-child(4) { rotate: 2deg; }
+.quote-stage-revenge .semantic-orbit { border-radius: 50% 8% 50% 8%; }
+.quote-stage-hardwork .semantic-orbit { border-radius: 0; }
+.quote-stage-focus .semantic-orbit-outer { box-shadow: 0 0 38px color-mix(in srgb, currentColor 10%, transparent); }
+
 /* DRIVE — kinetic sports poster */
 .quote-stage-drive {
   border: 1px solid rgba(255, 243, 232, 0.22);
@@ -1366,6 +1496,14 @@ button:focus-visible {
   .quote-copy-long p { font-size: clamp(1.7rem, 7.7vw, 3.1rem); }
   .quote-copy footer { align-items: flex-start; flex-direction: column; gap: 0.35rem; }
   .next-quote { right: 1.15rem; bottom: 1.15rem; }
+  .semantic-visual { right: -8%; width: min(68vw, 20rem); }
+  .quote-stage-calm .semantic-visual { right: auto; left: -11%; }
+  .semantic-signals { right: 4.7rem; bottom: 1.28rem; max-width: calc(100% - 6.2rem); }
+  .semantic-signal-line { display: none; }
+  .semantic-signal-chip { min-width: 1.8rem; min-height: 1.8rem; justify-content: center; padding: 0.35rem; }
+  .semantic-signal-chip span,
+  .semantic-signal-chip small { display: none; }
+  .semantic-signal-chip:nth-child(n + 4) { display: none; }
   .quote-stage-calm { border-radius: 1.8rem; }
   .quote-stage-calm .quote-copy { width: 100%; padding-right: 0; }
   .quote-stage-calm .quote-copy p { font-size: clamp(2.05rem, 9.4vw, 3.9rem); }
@@ -1419,5 +1557,10 @@ button:focus-visible {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.001ms !important;
+  }
+
+  .semantic-orbit,
+  .semantic-glyph {
+    transform: none !important;
   }
 }

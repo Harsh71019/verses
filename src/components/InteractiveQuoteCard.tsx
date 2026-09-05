@@ -5,6 +5,7 @@ import type { PanInfo, Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import type { Mood } from '../lib/moods'
 import type { Quote } from '../types'
+import SemanticElements from './SemanticElements'
 
 export interface InteractiveQuoteCardProps {
   quote: Quote
@@ -117,6 +118,7 @@ export const InteractiveQuoteCard = forwardRef<HTMLDivElement, InteractiveQuoteC
             style={{ rotateX, rotateY, transformPerspective: 1400 }}
           >
             <QuoteDecoration moodId={mood.id} />
+            <SemanticElements quote={quote.quote} moodId={mood.id} />
 
             <div className="quote-meta">
               <span className="quote-index">{quote.id.slice(-2)}</span>
