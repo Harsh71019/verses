@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, Copy, Download, LoaderCircle, Shuffle } from 'lucide-react'
+import { Check, Copy, Download, LoaderCircle, Settings, Shuffle } from 'lucide-react'
 
 interface ToolbarProps {
   onNew: () => void
@@ -8,9 +8,13 @@ interface ToolbarProps {
   onCopy: () => void
   copied: boolean
   exporting: boolean
+  slideshowEnabled: boolean
+  slideshowCycleKey: string
+  slideshowInterval: number
+  onSettings: () => void
 }
 
-export function Toolbar({ onNew, onExport, onCopy, copied, exporting }: ToolbarProps) {
+export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings }: ToolbarProps) {
   const [shuffleRotation, setShuffleRotation] = useState(0)
 
   const shuffle = () => {
@@ -46,6 +50,26 @@ export function Toolbar({ onNew, onExport, onCopy, copied, exporting }: ToolbarP
             </motion.span>
           )}
         </AnimatePresence>
+      </motion.button>
+
+      <motion.button
+        type="button"
+        className="toolbar-icon-button settings-trigger"
+        aria-label={slideshowEnabled ? 'Slideshow settings, autoplay on' : 'Slideshow settings, autoplay off'}
+        onClick={onSettings}
+        whileHover={{ rotate: 20 }}
+        whileTap={{ scale: 0.86 }}
+      >
+        <Settings aria-hidden />
+        {slideshowEnabled ? (
+          <motion.span
+            key={slideshowCycleKey}
+            className="slideshow-progress"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: slideshowInterval / 1000, ease: 'linear' }}
+          />
+        ) : null}
       </motion.button>
 
       <motion.button

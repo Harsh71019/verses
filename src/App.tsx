@@ -8,10 +8,32 @@ import { AmbientBackground } from './components/AmbientBackground'
 import { InteractiveQuoteCard } from './components/InteractiveQuoteCard'
 import { Toolbar } from './components/Toolbar'
 import { MoodDock } from './components/MoodDock'
+import { SlideshowSettings } from './components/SlideshowSettings'
 import { copyText } from './lib/clipboard'
 import { exportCardAsImage } from './lib/exportCard'
 
 const QUOTES = quotesData as Quote[]
+const SLIDESHOW_INTERVALS = [5_000, 15_000, 30_000, 60_000, 300_000] as const
+const SLIDESHOW_STORAGE_KEY = 'verse:slideshow:v1'
+
+interface SlideshowPreferences {
+  enabled: boolean
+  interval: number
+}
+
+function loadSlideshowPreferences(): SlideshowPreferences {
+  try {
+    const stored = window.localStorage.getItem(SLIDESHOW_STORAGE_KEY)
+    if (!stored) return { enabled: false, interval: 15_000 }
+    const parsed = JSON.parse(stored) as Partial<SlideshowPreferences>
+    const interval = SLIDESHOW_INTERVALS.includes(parsed.interval as (typeof SLIDESHOW_INTERVALS)[number])
+      ? parsed.interval as number
+      : 15_000
+    return { enabled: parsed.enabled === true, interval }
+  } catch {
+    return { enabled: false, interval: 15_000 }
+  }
+}
 
 function getQuotesForMood(mood: MoodId): Quote[] {
   return QUOTES.filter((quote) => quote.category === mood)
@@ -29,6 +51,8 @@ export default function App() {
   const [direction, setDirection] = useState(1)
   const [copied, setCopied] = useState(false)
   const [exporting, setExporting] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [slideshow, setSlideshow] = useState<SlideshowPreferences>(loadSlideshowPreferences)
   const cardRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
@@ -73,6 +97,28 @@ export default function App() {
       setExporting(false)
     }
   }, [mood, exporting])
+
+  const closeSettings = useCallback(() => setSettingsOpen(false), [])
+  const setSlideshowEnabled = useCallback((enabled: boolean) => {
+    setSlideshow((current) => ({ ...current, enabled }))
+  }, [])
+  const setSlideshowInterval = useCallback((interval: number) => {
+    setSlideshow((current) => ({ ...current, interval }))
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem(SLIDESHOW_STORAGE_KEY, JSON.stringify(slideshow))
+  }, [slideshow])
+
+  useEffect(() => {
+    if (!slideshow.enabled || settingsOpen) return
+
+    const timer = window.setInterval(() => {
+      if (document.visibilityState === 'visible') nextQuote(-1)
+    }, slideshow.interval)
+
+    return () => window.clearInterval(timer)
+  }, [slideshow.enabled, slideshow.interval, settingsOpen, nextQuote])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -143,6 +189,20 @@ export default function App() {
         onCopy={handleCopy}
         copied={copied}
         exporting={exporting}
+        slideshowEnabled={slideshow.enabled}
+        slideshowCycleKey={`${quote.id}-${slideshow.interval}`}
+        slideshowInterval={slideshow.interval}
+        onSettings={() => setSettingsOpen(true)}
+      />
+
+      <SlideshowSettings
+        open={settingsOpen}
+        enabled={slideshow.enabled}
+        interval={slideshow.interval}
+        intervals={SLIDESHOW_INTERVALS}
+        onEnabledChange={setSlideshowEnabled}
+        onIntervalChange={setSlideshowInterval}
+        onClose={closeSettings}
       />
 
       <div className="key-hint" aria-hidden>
