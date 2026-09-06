@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, Copy, Download, LoaderCircle, Maximize2, Music2, Settings, Shuffle, Wind } from 'lucide-react'
+import { Check, Copy, Download, Heart, Library, LoaderCircle, Maximize2, Music2, Settings, Shuffle, Wind } from 'lucide-react'
 
 interface ToolbarProps {
   onNew: () => void
@@ -18,9 +18,13 @@ interface ToolbarProps {
   onSoundToggle: () => void
   reflectionActive: boolean
   onReflectionToggle: () => void
+  isFavorite: boolean
+  favoriteCount: number
+  onToggleFavorite: () => void
+  onOpenFavorites: () => void
 }
 
-export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings, onFullscreen, soundEnabled, soundTitle, onSoundToggle, reflectionActive, onReflectionToggle }: ToolbarProps) {
+export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings, onFullscreen, soundEnabled, soundTitle, onSoundToggle, reflectionActive, onReflectionToggle, isFavorite, favoriteCount, onToggleFavorite, onOpenFavorites }: ToolbarProps) {
   const [shuffleRotation, setShuffleRotation] = useState(0)
 
   const shuffle = () => {
@@ -56,6 +60,38 @@ export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowE
             </motion.span>
           )}
         </AnimatePresence>
+      </motion.button>
+
+      <motion.button
+        type="button"
+        className={`toolbar-icon-button favorite-trigger${isFavorite ? ' is-active' : ''}`}
+        aria-label={isFavorite ? 'Remove from saved quotes' : 'Save this quote'}
+        title={isFavorite ? 'Saved' : 'Save this quote (S)'}
+        onClick={onToggleFavorite}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.8 }}
+      >
+        <motion.span
+          key={isFavorite ? 'saved' : 'unsaved'}
+          initial={{ scale: 0.6 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 16 }}
+        >
+          <Heart aria-hidden fill={isFavorite ? 'currentColor' : 'none'} />
+        </motion.span>
+      </motion.button>
+
+      <motion.button
+        type="button"
+        className="toolbar-icon-button favorites-trigger"
+        aria-label={favoriteCount > 0 ? `View ${favoriteCount} saved quotes` : 'View saved quotes'}
+        title="Saved quotes"
+        onClick={onOpenFavorites}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.84 }}
+      >
+        <Library aria-hidden />
+        {favoriteCount > 0 ? <span className="favorites-count">{favoriteCount}</span> : null}
       </motion.button>
 
       <motion.button

@@ -11,9 +11,11 @@ import { Toolbar } from './components/Toolbar'
 import { MoodDock } from './components/MoodDock'
 import { SlideshowSettings } from './components/SlideshowSettings'
 import { BreathingRitual } from './components/BreathingRitual'
+import { FavoritesPanel } from './components/FavoritesPanel'
 import { copyText } from './lib/clipboard'
 import { exportCardAsImage } from './lib/exportCard'
 import { getMoodSoundTitle, MoodSoundEngine } from './lib/moodSound'
+import { loadFavoriteIds, saveFavoriteIds } from './lib/favorites'
 
 const QUOTES = quotesData as Quote[]
 const SLIDESHOW_INTERVALS = [5_000, 15_000, 30_000, 60_000, 300_000] as const
@@ -60,6 +62,8 @@ export default function App() {
   const [ambientExitVisible, setAmbientExitVisible] = useState(false)
   const [soundEnabled, setSoundEnabled] = useState(false)
   const [reflectionActive, setReflectionActive] = useState(false)
+  const [favoriteIds, setFavoriteIds] = useState<string[]>(loadFavoriteIds)
+  const [favoritesOpen, setFavoritesOpen] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
   const ambientHideTimer = useRef<number | undefined>(undefined)
   const nativeFullscreenEntered = useRef(false)
@@ -130,6 +134,23 @@ export default function App() {
     setSoundEnabled(started)
   }, [mood, soundEnabled])
 
+  const toggleFavorite = useCallback(() => {
+    setFavoriteIds((current) =>
+      current.includes(quote.id) ? current.filter((id) => id !== quote.id) : [...current, quote.id],
+    )
+  }, [quote.id])
+
+  const removeFavorite = useCallback((id: string) => {
+    setFavoriteIds((current) => current.filter((favoriteId) => favoriteId !== id))
+  }, [])
+
+  const jumpToFavorite = useCallback((target: Quote) => {
+    setDirection(0)
+    setMood(target.category)
+    setQuote(target)
+    setFavoritesOpen(false)
+  }, [])
+
   const toggleReflection = useCallback(() => {
     setSettingsOpen(false)
     if (!reflectionActive && soundEnabled) {
@@ -177,6 +198,10 @@ export default function App() {
   useEffect(() => {
     window.localStorage.setItem(SLIDESHOW_STORAGE_KEY, JSON.stringify(slideshow))
   }, [slideshow])
+
+  useEffect(() => {
+    saveFavoriteIds(favoriteIds)
+  }, [favoriteIds])
 
   useEffect(() => {
     if (soundEnabled) soundEngine.current?.setMood(mood)
@@ -265,14 +290,21 @@ export default function App() {
         void toggleSound()
       } else if (event.key.toLowerCase() === 'b' && !event.metaKey && !event.ctrlKey) {
         toggleReflection()
+      } else if (event.key.toLowerCase() === 's' && !event.metaKey && !event.ctrlKey) {
+        toggleFavorite()
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [nextQuote, handleMoodChange, handleCopy, handleExport, isFullscreen, reflectionActive, toggleFullscreen, toggleSound, toggleReflection])
+  }, [nextQuote, handleMoodChange, handleCopy, handleExport, isFullscreen, reflectionActive, toggleFullscreen, toggleSound, toggleReflection, toggleFavorite])
 
   const activeMood = MOODS.find((item) => item.id === mood) ?? MOODS[0]
+  const isFavorite = favoriteIds.includes(quote.id)
+  const favoriteQuotes = favoriteIds
+    .map((id) => QUOTES.find((item) => item.id === id))
+    .filter((item): item is Quote => item !== undefined)
+    .reverse()
 
   return (
     <div className={`app-shell mood-${mood}${isFullscreen ? ' is-ambient' : ''}${ambientExitVisible ? ' ambient-exit-visible' : ''}${reflectionActive ? ' is-reflecting' : ''}`}>
@@ -330,6 +362,20 @@ export default function App() {
         onSoundToggle={() => void toggleSound()}
         reflectionActive={reflectionActive}
         onReflectionToggle={toggleReflection}
+        isFavorite={isFavorite}
+        favoriteCount={favoriteIds.length}
+        onToggleFavorite={toggleFavorite}
+        onOpenFavorites={() => setFavoritesOpen(true)}
+      />
+
+      <FavoritesPanel
+        open={favoritesOpen}
+        quotes={favoriteQuotes}
+        moods={MOODS}
+        activeQuoteId={quote.id}
+        onSelect={jumpToFavorite}
+        onRemove={removeFavorite}
+        onClose={() => setFavoritesOpen(false)}
       />
 
       <SlideshowSettings
