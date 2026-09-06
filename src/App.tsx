@@ -12,6 +12,7 @@ import { MoodDock } from './components/MoodDock'
 import { SlideshowSettings } from './components/SlideshowSettings'
 import { copyText } from './lib/clipboard'
 import { exportCardAsImage } from './lib/exportCard'
+import { getMoodSoundTitle, MoodSoundEngine } from './lib/moodSound'
 
 const QUOTES = quotesData as Quote[]
 const SLIDESHOW_INTERVALS = [5_000, 15_000, 30_000, 60_000, 300_000] as const
@@ -56,9 +57,11 @@ export default function App() {
   const [slideshow, setSlideshow] = useState<SlideshowPreferences>(loadSlideshowPreferences)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [ambientExitVisible, setAmbientExitVisible] = useState(false)
+  const [soundEnabled, setSoundEnabled] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
   const ambientHideTimer = useRef<number | undefined>(undefined)
   const nativeFullscreenEntered = useRef(false)
+  const soundEngine = useRef<MoodSoundEngine | null>(null)
 
   useLayoutEffect(() => {
     document.documentElement.dataset.mood = mood
@@ -111,6 +114,20 @@ export default function App() {
     setSlideshow((current) => ({ ...current, interval }))
   }, [])
 
+  const toggleSound = useCallback(async () => {
+    const engine = soundEngine.current ?? new MoodSoundEngine()
+    soundEngine.current = engine
+
+    if (soundEnabled) {
+      engine.stop()
+      setSoundEnabled(false)
+      return
+    }
+
+    const started = await engine.start(mood)
+    setSoundEnabled(started)
+  }, [mood, soundEnabled])
+
   const revealAmbientExit = useCallback(() => {
     setAmbientExitVisible(true)
     window.clearTimeout(ambientHideTimer.current)
@@ -149,6 +166,23 @@ export default function App() {
   useEffect(() => {
     window.localStorage.setItem(SLIDESHOW_STORAGE_KEY, JSON.stringify(slideshow))
   }, [slideshow])
+
+  useEffect(() => {
+    if (soundEnabled) soundEngine.current?.setMood(mood)
+  }, [mood, soundEnabled])
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      void soundEngine.current?.setPageVisible(document.visibilityState === 'visible')
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [])
+
+  useEffect(() => () => {
+    void soundEngine.current?.dispose()
+  }, [])
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -212,12 +246,14 @@ export default function App() {
         handleExport()
       } else if (event.key.toLowerCase() === 'f' && !event.metaKey && !event.ctrlKey) {
         toggleFullscreen()
+      } else if (event.key.toLowerCase() === 'm' && !event.metaKey && !event.ctrlKey) {
+        void toggleSound()
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [nextQuote, handleMoodChange, handleCopy, handleExport, isFullscreen, toggleFullscreen])
+  }, [nextQuote, handleMoodChange, handleCopy, handleExport, isFullscreen, toggleFullscreen, toggleSound])
 
   const activeMood = MOODS.find((item) => item.id === mood) ?? MOODS[0]
 
@@ -272,6 +308,9 @@ export default function App() {
         slideshowInterval={slideshow.interval}
         onSettings={() => setSettingsOpen(true)}
         onFullscreen={toggleFullscreen}
+        soundEnabled={soundEnabled}
+        soundTitle={getMoodSoundTitle(mood)}
+        onSoundToggle={() => void toggleSound()}
       />
 
       <SlideshowSettings

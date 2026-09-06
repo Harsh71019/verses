@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "test": "node --test tests/moodSound.test.ts",
     "populate:quotes": "node scripts/populate-quotes.mjs",
     "lint": "oxlint",
     "preview": "vite preview"

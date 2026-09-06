@@ -1169,6 +1169,43 @@ button:focus-visible {
   overflow: hidden;
 }
 
+.sound-trigger {
+  position: relative;
+  isolation: isolate;
+}
+
+.sound-trigger.is-playing {
+  background: color-mix(in srgb, var(--mood-accent) 18%, transparent);
+  color: var(--mood-accent);
+}
+
+.sound-wave {
+  position: absolute !important;
+  right: 0.17rem;
+  bottom: 0.18rem;
+  display: flex !important;
+  height: 0.48rem;
+  align-items: end;
+  gap: 1px;
+}
+
+.sound-wave i {
+  width: 2px;
+  height: 100%;
+  border-radius: 99px;
+  background: currentColor;
+  animation: sound-wave 0.72s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+.sound-wave i:nth-child(2) { animation-delay: -0.46s; }
+.sound-wave i:nth-child(3) { animation-delay: -0.23s; }
+
+@keyframes sound-wave {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+
 .slideshow-progress {
   position: absolute !important;
   z-index: 2;

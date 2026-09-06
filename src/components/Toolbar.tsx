@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, Copy, Download, LoaderCircle, Maximize2, Settings, Shuffle } from 'lucide-react'
+import { Check, Copy, Download, LoaderCircle, Maximize2, Music2, Settings, Shuffle } from 'lucide-react'
 
 interface ToolbarProps {
   onNew: () => void
@@ -13,9 +13,12 @@ interface ToolbarProps {
   slideshowInterval: number
   onSettings: () => void
   onFullscreen: () => void
+  soundEnabled: boolean
+  soundTitle: string
+  onSoundToggle: () => void
 }
 
-export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings, onFullscreen }: ToolbarProps) {
+export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings, onFullscreen, soundEnabled, soundTitle, onSoundToggle }: ToolbarProps) {
   const [shuffleRotation, setShuffleRotation] = useState(0)
 
   const shuffle = () => {
@@ -51,6 +54,23 @@ export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowE
             </motion.span>
           )}
         </AnimatePresence>
+      </motion.button>
+
+      <motion.button
+        type="button"
+        className={`toolbar-icon-button sound-trigger${soundEnabled ? ' is-playing' : ''}`}
+        aria-label={`${soundEnabled ? 'Pause' : 'Play'} ${soundTitle} soundscape`}
+        title={`${soundEnabled ? 'Pause' : 'Play'} ${soundTitle}`}
+        onClick={onSoundToggle}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.84 }}
+      >
+        <Music2 aria-hidden />
+        {soundEnabled ? (
+          <span className="sound-wave" aria-hidden>
+            <i /><i /><i />
+          </span>
+        ) : null}
       </motion.button>
 
       <motion.button
