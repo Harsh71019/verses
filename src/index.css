@@ -1454,6 +1454,269 @@ button:focus-visible {
   pointer-events: none;
 }
 
+/* Sanctuary is intentionally its own place rather than a modal over the quote card. */
+.sanctuary-scene {
+  --sanctuary-ink: #e8f0e6;
+  --sanctuary-muted: rgba(232, 240, 230, 0.58);
+  --sanctuary-line: rgba(232, 240, 230, 0.16);
+  --sanctuary-accent: #d7b978;
+  grid-template-columns: minmax(13rem, 1fr) minmax(20rem, 2fr) minmax(13rem, 1fr);
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(1rem, 2.4vw, 2.5rem);
+  background: #102b28;
+  color: var(--sanctuary-ink);
+  transition: background-color 900ms ease;
+}
+
+.sanctuary-rain { background: #18343a; }
+.sanctuary-tide { background: #123a42; }
+
+.sanctuary-landscape {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(223, 198, 137, 0.18), transparent 21%),
+    linear-gradient(180deg, rgba(137, 175, 158, 0.22), transparent 58%);
+}
+
+.sanctuary-rain .sanctuary-landscape {
+  background:
+    repeating-linear-gradient(104deg, transparent 0 17px, rgba(210, 231, 225, 0.045) 18px 19px, transparent 20px 37px),
+    radial-gradient(circle at 50% 34%, rgba(186, 210, 203, 0.14), transparent 23%),
+    linear-gradient(180deg, #294951 0%, #18343a 58%, #102a30 100%);
+}
+
+.sanctuary-tide .sanctuary-landscape {
+  background:
+    radial-gradient(circle at 50% 31%, rgba(242, 203, 132, 0.18), transparent 20%),
+    linear-gradient(180deg, #2b6064 0%, #1c4b52 49%, #0e333c 100%);
+}
+
+.sanctuary-sun {
+  position: absolute;
+  left: 50%;
+  top: 19%;
+  width: clamp(7rem, 13vw, 12rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #e4c886;
+  box-shadow: 0 0 7rem rgba(228, 200, 134, 0.3);
+  opacity: 0.72;
+  translate: -50% 0;
+}
+
+.sanctuary-rain .sanctuary-sun { background: #b3cfca; opacity: 0.32; }
+.sanctuary-tide .sanctuary-sun { background: #ecc47f; opacity: 0.56; }
+
+.sanctuary-ridge {
+  position: absolute;
+  right: -8%;
+  bottom: 18%;
+  left: -8%;
+  height: 39%;
+  background: #234840;
+  clip-path: polygon(0 58%, 10% 45%, 17% 51%, 28% 23%, 38% 50%, 50% 9%, 61% 45%, 72% 27%, 84% 55%, 92% 39%, 100% 54%, 100% 100%, 0 100%);
+  opacity: 0.7;
+}
+
+.sanctuary-ridge-near {
+  bottom: 6%;
+  height: 32%;
+  background: #0b2522;
+  clip-path: polygon(0 43%, 12% 27%, 22% 48%, 34% 16%, 47% 52%, 61% 24%, 76% 51%, 88% 20%, 100% 40%, 100% 100%, 0 100%);
+  opacity: 0.84;
+}
+
+.sanctuary-rain .sanctuary-ridge-far { background: #2b5050; }
+.sanctuary-rain .sanctuary-ridge-near { background: #112d30; }
+.sanctuary-tide .sanctuary-ridge { opacity: 0.48; }
+.sanctuary-tide .sanctuary-ridge-near { bottom: 2%; height: 22%; background: #092c35; }
+
+.sanctuary-water {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 23%;
+  background: linear-gradient(180deg, rgba(99, 150, 139, 0.22), rgba(5, 31, 30, 0.75));
+  border-top: 1px solid rgba(205, 228, 216, 0.16);
+}
+
+.sanctuary-water::after {
+  content: "";
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: min(38vw, 32rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(228, 200, 134, 0.55), transparent);
+  box-shadow: 0 1.8rem 0 rgba(228, 200, 134, 0.1), 0 3.6rem 0 rgba(228, 200, 134, 0.06);
+  translate: -50% 0;
+}
+
+.sanctuary-leaf {
+  position: absolute;
+  top: 8%;
+  width: 0.75rem;
+  height: 1.5rem;
+  border-radius: 100% 0 100% 0;
+  background: #9fbd83;
+  opacity: 0.42;
+}
+
+.leaf-one { left: 17%; }
+.leaf-two { right: 15%; top: 1%; }
+
+.sanctuary-header {
+  position: relative;
+  z-index: 4;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.sanctuary-brand { display: flex; align-items: center; gap: 0.8rem; }
+.sanctuary-brand > span {
+  display: grid;
+  width: 2.4rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--sanctuary-line);
+  border-radius: 50%;
+  color: var(--sanctuary-accent);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+.sanctuary-brand p { display: flex; flex-direction: column; margin: 0; }
+.sanctuary-brand strong { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; font-weight: 400; }
+.sanctuary-brand small { margin-top: 0.12rem; color: var(--sanctuary-muted); font-family: var(--font-mono); font-size: 0.48rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+.sanctuary-scene .breathing-close {
+  position: static;
+  border-color: var(--sanctuary-line);
+  background: rgba(8, 29, 27, 0.48);
+  color: var(--sanctuary-ink);
+}
+
+.sanctuary-scene .breathing-close kbd { background: var(--sanctuary-accent); }
+
+.sanctuary-scene .breathing-center {
+  z-index: 3;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  justify-self: center;
+  transform: translateY(-2%);
+}
+
+.breathing-practice { display: flex; flex-direction: column; align-items: center; }
+
+.sanctuary-scene .breathing-orbit { width: clamp(11.5rem, 21vw, 18rem); }
+.sanctuary-scene .breathing-ring { border-color: rgba(225, 206, 156, 0.35); }
+.sanctuary-scene .breathing-ring-three {
+  background: rgba(215, 185, 120, 0.1);
+  border-color: rgba(232, 211, 160, 0.72);
+  box-shadow: 0 0 5rem rgba(215, 185, 120, 0.15), inset 0 0 2rem rgba(215, 185, 120, 0.07);
+}
+.sanctuary-scene .breathing-orbit strong { color: #f0d795; font-size: clamp(2rem, 4.5vw, 4.4rem); text-shadow: 0 0 0.6em rgba(228, 200, 134, 0.26); }
+.sanctuary-scene .breathing-copy { min-height: 3.5rem; margin-top: 0.7rem; }
+.sanctuary-scene .breathing-copy span { font-size: clamp(1.25rem, 2vw, 1.85rem); }
+.sanctuary-scene .breathing-copy small,
+.sanctuary-scene .breathing-timeline i { color: var(--sanctuary-muted); }
+.sanctuary-scene .breathing-timeline { margin-top: 0.75rem; }
+.sanctuary-scene .breathing-timeline em { background: var(--sanctuary-accent); box-shadow: 0 0 0.6rem rgba(215, 185, 120, 0.45); }
+
+.sanctuary-panel {
+  position: relative;
+  z-index: 5;
+  align-self: end;
+  width: min(20vw, 17rem);
+  min-width: 13rem;
+  padding: 1rem;
+  border: 1px solid var(--sanctuary-line);
+  border-radius: 1.15rem;
+  background: rgba(7, 28, 26, 0.58);
+  box-shadow: 0 1.5rem 4rem rgba(3, 18, 17, 0.18);
+  backdrop-filter: blur(20px) saturate(120%);
+}
+
+.sanctuary-sound-panel { grid-column: 1; grid-row: 3; justify-self: start; }
+.sanctuary-time-panel { grid-column: 3; grid-row: 3; justify-self: end; }
+
+.sanctuary-panel-heading { display: flex; align-items: center; gap: 0.7rem; }
+.sanctuary-panel-heading > svg { width: 1rem; color: var(--sanctuary-accent); }
+.sanctuary-panel-heading > span { display: flex; flex-direction: column; }
+.sanctuary-panel-heading strong { font-size: 0.7rem; font-weight: 500; }
+.sanctuary-panel-heading small,
+.sanctuary-kicker { color: var(--sanctuary-muted); font-family: var(--font-mono); font-size: 0.43rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.nature-options,
+.session-options { display: flex; gap: 0.25rem; margin-top: 0.9rem; }
+
+.nature-options button,
+.session-options button {
+  flex: 1;
+  min-width: 0;
+  padding: 0.45rem 0.3rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sanctuary-muted);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.45rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nature-options button.is-selected,
+.session-options button.is-selected { background: rgba(232, 240, 230, 0.12); color: var(--sanctuary-ink); }
+
+.nature-play {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+  padding: 0.68rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--sanctuary-accent);
+  color: #17322e;
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 600;
+}
+
+.nature-play svg { width: 0.8rem; height: 0.8rem; }
+.sanctuary-time-panel > strong { display: block; margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.35rem; font-style: italic; font-weight: 400; }
+.session-count { position: absolute; top: 1rem; right: 1rem; color: var(--sanctuary-accent); font-family: var(--font-mono); font-size: 0.48rem; }
+
+.sanctuary-scene .breathing-quote {
+  z-index: 4;
+  right: 25%;
+  bottom: clamp(1.25rem, 2.4vw, 2.4rem);
+  left: 25%;
+  color: var(--sanctuary-muted);
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+}
+.sanctuary-scene .breathing-quote cite { display: inline; color: rgba(232, 240, 230, 0.38); font-family: var(--font-mono); font-size: 0.48rem; font-style: normal; letter-spacing: 0.05em; text-transform: uppercase; }
+
+.sanctuary-complete { display: flex; min-height: 20rem; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+.complete-mark { display: grid; width: 3.4rem; aspect-ratio: 1; place-items: center; margin-bottom: 1.2rem; border: 1px solid rgba(232, 211, 160, 0.65); border-radius: 50%; color: var(--sanctuary-accent); box-shadow: 0 0 3rem rgba(215, 185, 120, 0.15); }
+.complete-mark svg { width: 1.2rem; }
+.sanctuary-complete > small { color: var(--sanctuary-muted); font-family: var(--font-mono); font-size: 0.48rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.sanctuary-complete > strong { margin-top: 0.45rem; font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 5rem); font-style: italic; font-weight: 400; letter-spacing: -0.05em; }
+.sanctuary-complete p { margin: 0.4rem 0 1.4rem; color: var(--sanctuary-muted); font-size: 0.72rem; }
+.sanctuary-complete p em { color: var(--sanctuary-accent); font-family: var(--font-display); font-size: 1.2rem; }
+.sanctuary-complete button { display: flex; align-items: center; gap: 0.45rem; padding: 0.65rem 0.9rem; border: 1px solid var(--sanctuary-line); border-radius: 999px; background: rgba(232, 240, 230, 0.08); color: var(--sanctuary-ink); cursor: pointer; font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.sanctuary-complete button svg { width: 0.8rem; }
+
 .ambient-exit {
   position: fixed;
   z-index: 80;
@@ -1903,6 +2166,34 @@ button:focus-visible {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
+  .sanctuary-scene {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 0.55rem;
+    padding: 0.8rem;
+  }
+  .sanctuary-header { grid-column: 1 / -1; }
+  .sanctuary-brand small { display: none; }
+  .sanctuary-brand strong { font-size: 1.25rem; }
+  .sanctuary-brand > span { width: 2.15rem; }
+  .sanctuary-scene .breathing-center { grid-column: 1 / -1; grid-row: 2; width: 100%; }
+  .sanctuary-scene .breathing-orbit { width: min(52vw, 14.5rem); }
+  .sanctuary-scene .breathing-orbit strong { font-size: clamp(1.8rem, 11vw, 3.2rem); }
+  .sanctuary-scene .breathing-copy { margin-top: 0.4rem; }
+  .sanctuary-scene .breathing-timeline { width: min(76vw, 20rem); margin-top: 0.35rem; }
+  .sanctuary-panel { width: 100%; min-width: 0; padding: 0.7rem; border-radius: 0.9rem; }
+  .sanctuary-sound-panel { grid-column: 1; grid-row: 3; }
+  .sanctuary-time-panel { grid-column: 2; grid-row: 3; }
+  .sanctuary-panel-heading small { display: none; }
+  .nature-options,
+  .session-options { margin-top: 0.55rem; }
+  .nature-options button,
+  .session-options button { padding-inline: 0.12rem; font-size: 0.4rem; }
+  .nature-play { margin-top: 0.4rem; padding: 0.52rem; }
+  .sanctuary-time-panel > strong { font-size: 1.05rem; }
+  .sanctuary-scene .breathing-quote { display: none; }
+  .sanctuary-ridge { bottom: 14%; }
+  .sanctuary-water { height: 19%; }
   .is-ambient .quote-stage { padding: clamp(1.4rem, 6vw, 2.4rem); }
   .is-ambient .quote-copy { padding-right: 0; }
   .is-ambient .semantic-signals { right: 1.4rem; bottom: 1.4rem; }
@@ -1914,6 +2205,10 @@ button:focus-visible {
   .mood-intro p { display: none; }
   .quote-copy p { font-size: clamp(1.9rem, 5vw, 5rem); }
   .quote-copy-long p { font-size: clamp(1.55rem, 4.1vw, 4rem); }
+  .sanctuary-scene .breathing-orbit { width: clamp(8.5rem, 21vh, 11rem); }
+  .sanctuary-scene .breathing-copy { min-height: 2.8rem; margin-top: 0.25rem; }
+  .sanctuary-scene .breathing-timeline { margin-top: 0.25rem; }
+  .sanctuary-panel { padding-block: 0.65rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

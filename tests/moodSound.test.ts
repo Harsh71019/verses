@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { MOODS } from '../src/lib/moods.ts'
 import { getMoodSoundTitle, MOOD_SOUND_CONFIGS, MoodSoundEngine } from '../src/lib/moodSound.ts'
+import { NATURE_SCENES, NatureSoundEngine } from '../src/lib/natureSound.ts'
 
 test('every mood has a valid and playable sound identity', () => {
   for (const { id } of MOODS) {
@@ -33,6 +34,20 @@ test('the engine fails safely when Web Audio is unavailable', async () => {
   const engine = new MoodSoundEngine()
   assert.equal(await engine.start('drive'), false)
   engine.setMood('calm')
+  engine.stop()
+  await engine.setPageVisible(false)
+  await engine.dispose()
+})
+
+test('Sanctuary offers distinct nature scenes', () => {
+  assert.deepEqual(NATURE_SCENES.map(({ id }) => id), ['forest', 'rain', 'tide'])
+  assert.equal(new Set(NATURE_SCENES.map(({ caption }) => caption)).size, NATURE_SCENES.length)
+})
+
+test('the nature engine fails safely when Web Audio is unavailable', async () => {
+  const engine = new NatureSoundEngine()
+  assert.equal(await engine.start('forest'), false)
+  engine.setScene('rain')
   engine.stop()
   await engine.setPageVisible(false)
   await engine.dispose()

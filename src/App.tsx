@@ -132,8 +132,12 @@ export default function App() {
 
   const toggleReflection = useCallback(() => {
     setSettingsOpen(false)
+    if (!reflectionActive && soundEnabled) {
+      soundEngine.current?.stop()
+      setSoundEnabled(false)
+    }
     setReflectionActive((current) => !current)
-  }, [])
+  }, [reflectionActive, soundEnabled])
 
   const revealAmbientExit = useCallback(() => {
     setAmbientExitVisible(true)
