@@ -11,7 +11,12 @@ test('every mood has a valid and playable sound identity', () => {
     assert.ok(config.notes.length >= 4)
     assert.ok(config.pattern.some((step) => step !== null))
     assert.ok(config.pattern.every((step) => step === null || (step >= 0 && step < config.notes.length)))
-    assert.ok(config.master > 0 && config.master <= 0.12)
+    assert.ok(config.master > 0.12 && config.master <= 0.2)
+    assert.ok(config.guitarLevel >= 0.3 && config.guitarLevel <= 0.5)
+    assert.ok(config.guitarDecay >= 1 && config.guitarDecay <= 3.5)
+    assert.ok(config.guitarBrightness >= 1_000)
+    assert.ok(config.guitarOctave === 1 || config.guitarOctave === 2)
+    assert.ok(config.guitarDamping > 0.99 && config.guitarDamping < 1)
     assert.equal(getMoodSoundTitle(id), config.title)
   }
 })
