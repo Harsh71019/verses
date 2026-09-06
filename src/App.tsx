@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Minimize2 } from 'lucide-react'
 import quotesData from './data/quotes.json'
 import { MOODS } from './lib/moods'
 import type { MoodId } from './lib/moods'
@@ -53,7 +54,11 @@ export default function App() {
   const [exporting, setExporting] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [slideshow, setSlideshow] = useState<SlideshowPreferences>(loadSlideshowPreferences)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [ambientExitVisible, setAmbientExitVisible] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
+  const ambientHideTimer = useRef<number | undefined>(undefined)
+  const nativeFullscreenEntered = useRef(false)
 
   useLayoutEffect(() => {
     document.documentElement.dataset.mood = mood
@@ -106,9 +111,78 @@ export default function App() {
     setSlideshow((current) => ({ ...current, interval }))
   }, [])
 
+  const revealAmbientExit = useCallback(() => {
+    setAmbientExitVisible(true)
+    window.clearTimeout(ambientHideTimer.current)
+    ambientHideTimer.current = window.setTimeout(() => setAmbientExitVisible(false), 2_200)
+  }, [])
+
+  const toggleFullscreen = useCallback(async () => {
+    if (isFullscreen) {
+      setIsFullscreen(false)
+      window.clearTimeout(ambientHideTimer.current)
+      setAmbientExitVisible(false)
+
+      if (document.fullscreenElement) {
+        try {
+          await document.exitFullscreen()
+        } catch {
+          // Ambient mode has still exited even if the browser owns fullscreen state.
+        }
+      }
+      return
+    }
+
+    setSettingsOpen(false)
+    setIsFullscreen(true)
+    revealAmbientExit()
+
+    if (!document.fullscreenEnabled) return
+
+    try {
+      await document.documentElement.requestFullscreen({ navigationUI: 'hide' })
+    } catch {
+      // Embedded browsers can deny native fullscreen; the full-viewport fallback remains active.
+    }
+  }, [isFullscreen, revealAmbientExit])
+
   useEffect(() => {
     window.localStorage.setItem(SLIDESHOW_STORAGE_KEY, JSON.stringify(slideshow))
   }, [slideshow])
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const fullscreen = document.fullscreenElement !== null
+
+      if (fullscreen) {
+        nativeFullscreenEntered.current = true
+        setIsFullscreen(true)
+        revealAmbientExit()
+      } else if (nativeFullscreenEntered.current) {
+        nativeFullscreenEntered.current = false
+        setIsFullscreen(false)
+        window.clearTimeout(ambientHideTimer.current)
+        setAmbientExitVisible(false)
+      }
+    }
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+      window.clearTimeout(ambientHideTimer.current)
+    }
+  }, [revealAmbientExit])
+
+  useEffect(() => {
+    if (!isFullscreen) return
+
+    window.addEventListener('pointermove', revealAmbientExit, { passive: true })
+    window.addEventListener('touchstart', revealAmbientExit, { passive: true })
+    return () => {
+      window.removeEventListener('pointermove', revealAmbientExit)
+      window.removeEventListener('touchstart', revealAmbientExit)
+    }
+  }, [isFullscreen, revealAmbientExit])
 
   useEffect(() => {
     if (!slideshow.enabled || settingsOpen) return
@@ -123,7 +197,9 @@ export default function App() {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (['INPUT', 'TEXTAREA'].includes((event.target as HTMLElement).tagName)) return
-      if (event.key === 'ArrowRight' || event.key === ' ') {
+      if (event.key === 'Escape' && isFullscreen) {
+        toggleFullscreen()
+      } else if (event.key === 'ArrowRight' || event.key === ' ') {
         event.preventDefault()
         nextQuote(-1)
       } else if (event.key === 'ArrowLeft') {
@@ -134,17 +210,19 @@ export default function App() {
         handleCopy()
       } else if (event.key.toLowerCase() === 'e') {
         handleExport()
+      } else if (event.key.toLowerCase() === 'f' && !event.metaKey && !event.ctrlKey) {
+        toggleFullscreen()
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [nextQuote, handleMoodChange, handleCopy, handleExport])
+  }, [nextQuote, handleMoodChange, handleCopy, handleExport, isFullscreen, toggleFullscreen])
 
   const activeMood = MOODS.find((item) => item.id === mood) ?? MOODS[0]
 
   return (
-    <div className={`app-shell mood-${mood}`}>
+    <div className={`app-shell mood-${mood}${isFullscreen ? ' is-ambient' : ''}${ambientExitVisible ? ' ambient-exit-visible' : ''}`}>
       <AmbientBackground mood={mood} />
 
       <motion.header
@@ -193,6 +271,7 @@ export default function App() {
         slideshowCycleKey={`${quote.id}-${slideshow.interval}`}
         slideshowInterval={slideshow.interval}
         onSettings={() => setSettingsOpen(true)}
+        onFullscreen={toggleFullscreen}
       />
 
       <SlideshowSettings
@@ -208,6 +287,25 @@ export default function App() {
       <div className="key-hint" aria-hidden>
         <span>← →</span> move through words
       </div>
+
+      <AnimatePresence>
+        {isFullscreen && ambientExitVisible ? (
+          <motion.button
+            type="button"
+            className="ambient-exit"
+            aria-label="Exit fullscreen ambience"
+            onClick={toggleFullscreen}
+            initial={{ opacity: 0, y: -12, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.96 }}
+            transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Minimize2 aria-hidden />
+            <span>Exit ambience</span>
+            <kbd>Esc</kbd>
+          </motion.button>
+        ) : null}
+      </AnimatePresence>
     </div>
   )
 }

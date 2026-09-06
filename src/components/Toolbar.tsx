@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, Copy, Download, LoaderCircle, Settings, Shuffle } from 'lucide-react'
+import { Check, Copy, Download, LoaderCircle, Maximize2, Settings, Shuffle } from 'lucide-react'
 
 interface ToolbarProps {
   onNew: () => void
@@ -12,9 +12,10 @@ interface ToolbarProps {
   slideshowCycleKey: string
   slideshowInterval: number
   onSettings: () => void
+  onFullscreen: () => void
 }
 
-export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings }: ToolbarProps) {
+export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings, onFullscreen }: ToolbarProps) {
   const [shuffleRotation, setShuffleRotation] = useState(0)
 
   const shuffle = () => {
@@ -50,6 +51,17 @@ export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowE
             </motion.span>
           )}
         </AnimatePresence>
+      </motion.button>
+
+      <motion.button
+        type="button"
+        className="toolbar-icon-button"
+        aria-label="Enter fullscreen ambience"
+        onClick={onFullscreen}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.84 }}
+      >
+        <Maximize2 aria-hidden />
       </motion.button>
 
       <motion.button
