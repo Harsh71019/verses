@@ -3,6 +3,7 @@ import test from 'node:test'
 import { MOODS } from '../src/lib/moods.ts'
 import { getMoodSoundTitle, MOOD_SOUND_CONFIGS, MoodSoundEngine } from '../src/lib/moodSound.ts'
 import { NATURE_SCENES, NatureSoundEngine } from '../src/lib/natureSound.ts'
+import { getMotionSeed, getQuoteChoreography } from '../src/lib/motionChoreography.ts'
 
 test('every mood has a valid and playable sound identity', () => {
   for (const { id } of MOODS) {
@@ -51,4 +52,14 @@ test('the nature engine fails safely when Web Audio is unavailable', async () =>
   engine.stop()
   await engine.setPageVisible(false)
   await engine.dispose()
+})
+
+test('quote choreography is deterministic and distinct across moods', () => {
+  const first = getQuoteChoreography('drive', 'drive-001', -1)
+  const second = getQuoteChoreography('drive', 'drive-001', -1)
+  assert.deepEqual(first, second)
+
+  const entrances = MOODS.map(({ id }) => JSON.stringify(getQuoteChoreography(id, `${id}-001`, -1).enter))
+  assert.equal(new Set(entrances).size, MOODS.length)
+  assert.equal(getMotionSeed('revenge-207'), getMotionSeed('revenge-207'))
 })

@@ -50,7 +50,15 @@ const MOOD_PATTERNS: Record<MoodId, RegExp> = {
   focus: /^(?:attention|choice|clarity|decide|direction|focus|mind|priority|signal|single|vision)/i,
 }
 
-const MOTION_PRESETS: WordMotionPreset[] = ['rise', 'drop', 'slide', 'pivot', 'focus', 'pop']
+const MOOD_MOTION_PRESETS: Record<MoodId, readonly WordMotionPreset[]> = {
+  drive: ['rise', 'slide', 'pop'],
+  calm: ['focus', 'rise'],
+  grit: ['drop', 'pivot', 'rise'],
+  joy: ['pop', 'pivot', 'rise'],
+  revenge: ['slide', 'drop', 'pivot'],
+  hardwork: ['drop', 'rise', 'slide'],
+  focus: ['focus', 'slide'],
+}
 
 function normalizeWord(word: string) {
   return word.toLocaleLowerCase().replace(/[^\p{L}\p{N}'’-]/gu, '').replace(/[’']/g, '')
@@ -90,14 +98,15 @@ export function analyzeQuoteWords(quote: string, quoteId: string, moodId: MoodId
     const lengthWeight = Math.min(normalized.length, 12) * 0.62
     const edgeWeight = index === 0 || index === rawWords.length - 1 ? 0.35 : 0
     const score = isStopWord ? -100 : powerWeight + semanticWeight + moodWeight + repetitionWeight + lengthWeight + edgeWeight
-    const motionIndex = stableHash(`${quoteId}:${normalized}:${index}`) % MOTION_PRESETS.length
+    const motionPresets = MOOD_MOTION_PRESETS[moodId]
+    const motionIndex = stableHash(`${quoteId}:${normalized}:${index}`) % motionPresets.length
 
     return {
       raw,
       normalized,
       score,
       isStrongest: false,
-      motion: MOTION_PRESETS[motionIndex],
+      motion: motionPresets[motionIndex],
     }
   })
 

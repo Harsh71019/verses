@@ -746,6 +746,125 @@ button:focus-visible {
 .quote-stage-hardwork .semantic-orbit { border-radius: 0; }
 .quote-stage-focus .semantic-orbit-outer { box-shadow: 0 0 38px color-mix(in srgb, currentColor 10%, transparent); }
 
+.semantic-word-trace {
+  position: absolute;
+  inset: 0;
+  color: currentColor;
+  font-family: var(--font-mono);
+  font-size: clamp(0.44rem, 0.65vw, 0.62rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.semantic-word-trace span { position: absolute; }
+.semantic-word-trace span:nth-child(1) { top: 4%; left: 52%; }
+.semantic-word-trace span:nth-child(2) { right: -2%; top: 54%; writing-mode: vertical-rl; }
+.semantic-word-trace span:nth-child(3) { bottom: 5%; left: 18%; }
+
+.semantic-layer-drive .semantic-visual { transform: skewX(-4deg); }
+.semantic-layer-calm .semantic-orbit { border-style: solid; opacity: 0.1; }
+.semantic-layer-grit .semantic-glyph { opacity: 0.085; filter: drop-shadow(0.45rem 0.45rem 0 rgba(0, 0, 0, 0.22)); }
+.semantic-layer-joy .semantic-word-trace span { padding: 0.2rem 0.4rem; border-radius: 999px; background: color-mix(in srgb, currentColor 12%, transparent); }
+.semantic-layer-revenge .semantic-glyph { opacity: 0.14; filter: drop-shadow(0.7rem 0 #3c0606); }
+.semantic-layer-hardwork .semantic-word-trace { letter-spacing: 0.06em; }
+.semantic-layer-focus .semantic-word-trace span { text-shadow: 0 0 0.8rem currentColor; }
+
+/* Seeded kinetic accents: every quote varies, while every mood keeps its own physics. */
+.kinetic-field {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  color: var(--mood-accent);
+  pointer-events: none;
+}
+
+.kinetic-field > span {
+  position: absolute;
+  left: var(--accent-x);
+  top: var(--accent-y);
+  display: grid;
+  place-items: center;
+  color: currentColor;
+  font-family: var(--font-mono);
+  font-size: var(--accent-size);
+  line-height: 1;
+  opacity: 0;
+  rotate: var(--accent-rotation);
+  animation-delay: var(--accent-delay);
+  animation-duration: var(--accent-duration);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: transform, opacity;
+}
+
+.kinetic-drive > span {
+  animation-name: kinetic-surge;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kinetic-calm > span { animation-name: kinetic-drift; opacity: 0.22; }
+.kinetic-grit > span { animation-name: kinetic-impact; animation-timing-function: steps(5, end); }
+.kinetic-joy > span { animation-name: kinetic-celebrate; }
+.kinetic-revenge > span {
+  min-width: 1.8rem;
+  color: #ff2d2d;
+  animation-name: kinetic-slice;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+}
+.kinetic-hardwork > span { animation-name: kinetic-assemble; animation-timing-function: steps(4, end); }
+.kinetic-focus > span { animation-name: kinetic-lock; }
+
+@keyframes kinetic-surge {
+  0%, 72% { opacity: 0; transform: translate3d(-3.5rem, 2rem, 0) skewX(-14deg) scaleX(0.3); }
+  78% { opacity: 0.36; }
+  92% { opacity: 0.12; transform: translate3d(4.5rem, -2.4rem, 0) skewX(-5deg) scaleX(1.4); }
+  100% { opacity: 0; transform: translate3d(6rem, -3rem, 0) skewX(0deg); }
+}
+
+@keyframes kinetic-drift {
+  0%, 100% { transform: translate3d(-0.7rem, 0.9rem, 0) rotate(-7deg); opacity: 0.1; }
+  45% { transform: translate3d(1rem, -1rem, 0) rotate(9deg); opacity: 0.32; }
+  72% { transform: translate3d(0.4rem, -1.5rem, 0) rotate(2deg); opacity: 0.2; }
+}
+
+@keyframes kinetic-impact {
+  0%, 68% { opacity: 0; transform: translateY(-1.2rem) scale(1.7); }
+  71% { opacity: 0.42; transform: translateY(0) scale(0.86); }
+  74% { transform: translate(0.18rem, -0.08rem) scale(1); }
+  78% { transform: translate(-0.08rem, 0.05rem) scale(1); }
+  90% { opacity: 0.18; }
+  100% { opacity: 0; }
+}
+
+@keyframes kinetic-celebrate {
+  0%, 100% { opacity: 0.12; transform: translateY(1.4rem) rotate(-18deg) scale(0.7); }
+  35% { opacity: 0.52; transform: translateY(-1.1rem) rotate(16deg) scale(1.15); }
+  58% { transform: translateY(-0.4rem) rotate(-6deg) scale(0.95); }
+}
+
+@keyframes kinetic-slice {
+  0%, 76% { opacity: 0; transform: translateX(-4rem) skewX(-24deg) scaleX(2.2); filter: blur(3px); }
+  80% { opacity: 0.62; }
+  88% { opacity: 0.2; filter: blur(0); }
+  100% { opacity: 0; transform: translateX(5rem) skewX(-8deg) scaleX(0.7); }
+}
+
+@keyframes kinetic-assemble {
+  0%, 60% { opacity: 0; transform: translate(1.4rem, -1.4rem) rotate(90deg); }
+  68% { opacity: 0.42; transform: translate(0, 0) rotate(0); }
+  84% { opacity: 0.2; transform: translate(0, 0) rotate(0); }
+  100% { opacity: 0; transform: translate(-0.4rem, 0.4rem) rotate(0); }
+}
+
+@keyframes kinetic-lock {
+  0%, 64% { opacity: 0; transform: scale(1.9); filter: blur(5px); }
+  73% { opacity: 0.5; transform: scale(0.92); filter: blur(0); }
+  78%, 88% { opacity: 0.26; transform: scale(1); }
+  89% { opacity: 0.52; }
+  100% { opacity: 0; }
+}
+
 /* DRIVE — kinetic sports poster */
 .quote-stage-drive {
   --hero-word: #dfff38;

@@ -4,9 +4,11 @@ import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, u
 import type { PanInfo, Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import type { Mood } from '../lib/moods'
+import { getQuoteChoreography } from '../lib/motionChoreography'
 import { analyzeQuoteWords } from '../lib/wordEmphasis'
 import type { WordMotionPreset } from '../lib/wordEmphasis'
 import type { Quote } from '../types'
+import KineticAccents from './KineticAccents'
 import SemanticElements from './SemanticElements'
 
 export interface InteractiveQuoteCardProps {
@@ -14,30 +16,6 @@ export interface InteractiveQuoteCardProps {
   mood: Mood
   direction?: number
   onSwipe?: (direction: number) => void
-}
-
-const cardVariants: Variants = {
-  enter: (direction: number) => ({
-    x: direction === 0 ? 0 : direction > 0 ? '-8vw' : '8vw',
-    opacity: 0,
-    scale: direction === 0 ? 1 : 0.96,
-    rotateZ: direction === 0 ? 0 : direction > 0 ? -1.2 : 1.2,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    rotateZ: 0,
-    transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
-  },
-  exit: (direction: number) => direction === 0
-    ? { x: 0, opacity: 0, scale: 1, transition: { duration: 0.01 } }
-    : {
-        x: direction > 0 ? '5vw' : '-5vw',
-        opacity: 0,
-        scale: 0.985,
-        transition: { duration: 0.24, ease: [0.55, 0, 1, 0.45] },
-      },
 }
 
 interface WordAnimationData {
@@ -101,6 +79,10 @@ export const InteractiveQuoteCard = forwardRef<HTMLDivElement, InteractiveQuoteC
     const rotateY = useTransform(smoothX, [-0.5, 0.5], [-1.2, 1.2])
     const rotateX = useTransform(smoothY, [-0.5, 0.5], [1.2, -1.2])
     const prefersReducedMotion = useReducedMotion()
+    const choreography = useMemo(
+      () => getQuoteChoreography(mood.id, quote.id, direction),
+      [direction, mood.id, quote.id],
+    )
     const words = useMemo(
       () => analyzeQuoteWords(quote.quote, quote.id, mood.id),
       [mood.id, quote.id, quote.quote],
@@ -129,11 +111,9 @@ export const InteractiveQuoteCard = forwardRef<HTMLDivElement, InteractiveQuoteC
             key={quote.id}
             ref={ref}
             className={`quote-stage quote-stage-${mood.id}`}
-            custom={direction}
-            variants={cardVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
+            initial={prefersReducedMotion ? false : choreography.enter}
+            animate={choreography.center}
+            exit={prefersReducedMotion ? { opacity: 0 } : choreography.exit}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.16}
@@ -144,6 +124,7 @@ export const InteractiveQuoteCard = forwardRef<HTMLDivElement, InteractiveQuoteC
             style={{ rotateX, rotateY, transformPerspective: 1400 }}
           >
             <QuoteDecoration moodId={mood.id} />
+            <KineticAccents quote={quote.quote} quoteId={quote.id} moodId={mood.id} />
             <SemanticElements quote={quote.quote} moodId={mood.id} />
 
             <div className="quote-meta">
@@ -172,8 +153,8 @@ export const InteractiveQuoteCard = forwardRef<HTMLDivElement, InteractiveQuoteC
                         data-emphasis={word.isStrongest ? 'strongest' : undefined}
                         animate={prefersReducedMotion || !word.isStrongest
                           ? undefined
-                          : { scale: [1, 1.1, 1], y: [0, -4, 0] }}
-                        transition={{ duration: 0.68, delay: 0.6 + index * 0.026, ease: [0.16, 1, 0.3, 1] }}
+                          : choreography.hero}
+                        transition={choreography.heroTransition}
                       >
                         {word.raw}{index < words.length - 1 ? '\u00a0' : ''}
                       </motion.span>
