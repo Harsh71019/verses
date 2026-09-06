@@ -1179,6 +1179,11 @@ button:focus-visible {
   color: var(--mood-accent);
 }
 
+.reflection-trigger.is-active {
+  background: var(--mood-accent);
+  color: #141210;
+}
+
 .sound-wave {
   position: absolute !important;
   right: 0.17rem;
@@ -1253,6 +1258,200 @@ button:focus-visible {
   border: 1px solid var(--mood-control-line);
   border-radius: 999px;
   color: var(--mood-control-ink);
+}
+
+/* A quote becomes a breathing anchor: one deliberate ritual, not another dashboard. */
+.breathing-ritual {
+  position: fixed;
+  z-index: 70;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--mood-control-ink);
+}
+
+.breathing-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 47%, color-mix(in srgb, var(--mood-accent) 17%, transparent) 0, transparent 32%),
+    color-mix(in srgb, var(--page-bg) 78%, transparent);
+}
+
+.breathing-close {
+  position: absolute;
+  z-index: 3;
+  top: clamp(1rem, 2.2vw, 2rem);
+  right: clamp(1rem, 2.4vw, 2.5rem);
+  display: flex;
+  min-height: 2.65rem;
+  align-items: center;
+  gap: 0.58rem;
+  padding: 0.48rem 0.58rem 0.48rem 0.78rem;
+  border: 1px solid var(--mood-control-line);
+  border-radius: 999px;
+  background: var(--mood-control);
+  color: var(--mood-control-ink);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(22px) saturate(130%);
+}
+
+.breathing-close svg { width: 0.92rem; height: 0.92rem; }
+
+.breathing-close kbd {
+  padding: 0.34rem 0.44rem;
+  border-radius: 999px;
+  background: var(--mood-accent);
+  color: #141210;
+  font: inherit;
+}
+
+.breathing-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: min(92vw, 48rem);
+  flex-direction: column;
+  align-items: center;
+}
+
+.breathing-orbit {
+  position: relative;
+  display: grid;
+  width: clamp(14rem, 31vw, 27rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.breathing-ring {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--mood-accent) 42%, transparent);
+  border-radius: inherit;
+  box-shadow: inset 0 0 3rem color-mix(in srgb, var(--mood-accent) 4%, transparent);
+}
+
+.breathing-ring-one { inset: 0; opacity: 0.42; }
+.breathing-ring-two { inset: 11%; opacity: 0.68; }
+.breathing-ring-three {
+  inset: 23%;
+  background: color-mix(in srgb, var(--mood-accent) 11%, transparent);
+  border-color: color-mix(in srgb, var(--mood-accent) 76%, transparent);
+  box-shadow: 0 0 4rem color-mix(in srgb, var(--mood-accent) 18%, transparent);
+}
+
+.breathing-orbit strong {
+  position: relative;
+  z-index: 2;
+  max-width: 72%;
+  overflow-wrap: anywhere;
+  color: var(--mood-accent);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 5.8rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.85;
+  text-align: center;
+  text-shadow: 0 0 0.5em color-mix(in srgb, var(--mood-accent) 30%, transparent);
+}
+
+.breathing-copy {
+  display: flex;
+  min-height: 4.2rem;
+  align-items: center;
+  flex-direction: column;
+  margin-top: clamp(1rem, 3vh, 2rem);
+  text-align: center;
+}
+
+.breathing-copy span {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+  font-style: italic;
+}
+
+.breathing-copy small {
+  margin-top: 0.42rem;
+  color: var(--mood-muted);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.breathing-timeline {
+  display: grid;
+  width: min(82vw, 25rem);
+  grid-template-columns: 2fr 1fr 3fr;
+  gap: 0.35rem;
+  margin-top: 1.3rem;
+}
+
+.breathing-timeline span { min-width: 0; }
+
+.breathing-timeline i {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 0.42rem;
+  color: var(--mood-muted);
+  font-family: var(--font-mono);
+  font-size: 0.46rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.breathing-timeline b {
+  position: relative;
+  display: block;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--mood-control-ink) 16%, transparent);
+}
+
+.breathing-timeline em {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--mood-accent);
+  box-shadow: 0 0 0.6rem var(--mood-accent);
+  transform-origin: left;
+}
+
+.breathing-timeline .is-current i { color: var(--mood-control-ink); }
+
+.breathing-quote {
+  position: absolute;
+  z-index: 1;
+  right: clamp(1rem, 3vw, 3rem);
+  bottom: clamp(1rem, 2vw, 2rem);
+  left: clamp(1rem, 3vw, 3rem);
+  margin: 0;
+  color: var(--mood-muted);
+  font-family: var(--font-display);
+  font-size: clamp(0.82rem, 1.25vw, 1.1rem);
+  font-style: italic;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.is-reflecting .brand,
+.is-reflecting .mood-dock,
+.is-reflecting .toolbar,
+.is-reflecting .key-hint,
+.is-reflecting .mood-intro,
+.is-reflecting .quote-stage {
+  pointer-events: none;
 }
 
 .ambient-exit {
@@ -1695,6 +1894,15 @@ button:focus-visible {
   .timing-grid { grid-template-columns: repeat(3, 1fr); }
   .settings-footer { padding: 0.85rem 0.8rem 0.85rem 1.35rem; }
   .ambient-exit span { display: none; }
+  .breathing-close span { display: none; }
+  .breathing-orbit { width: min(67vw, 19rem); }
+  .breathing-quote {
+    bottom: 1rem;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
   .is-ambient .quote-stage { padding: clamp(1.4rem, 6vw, 2.4rem); }
   .is-ambient .quote-copy { padding-right: 0; }
   .is-ambient .semantic-signals { right: 1.4rem; bottom: 1.4rem; }

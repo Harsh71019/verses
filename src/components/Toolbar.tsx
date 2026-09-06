@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Check, Copy, Download, LoaderCircle, Maximize2, Music2, Settings, Shuffle } from 'lucide-react'
+import { Check, Copy, Download, LoaderCircle, Maximize2, Music2, Settings, Shuffle, Wind } from 'lucide-react'
 
 interface ToolbarProps {
   onNew: () => void
@@ -16,9 +16,11 @@ interface ToolbarProps {
   soundEnabled: boolean
   soundTitle: string
   onSoundToggle: () => void
+  reflectionActive: boolean
+  onReflectionToggle: () => void
 }
 
-export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings, onFullscreen, soundEnabled, soundTitle, onSoundToggle }: ToolbarProps) {
+export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowEnabled, slideshowCycleKey, slideshowInterval, onSettings, onFullscreen, soundEnabled, soundTitle, onSoundToggle, reflectionActive, onReflectionToggle }: ToolbarProps) {
   const [shuffleRotation, setShuffleRotation] = useState(0)
 
   const shuffle = () => {
@@ -71,6 +73,18 @@ export function Toolbar({ onNew, onExport, onCopy, copied, exporting, slideshowE
             <i /><i /><i />
           </span>
         ) : null}
+      </motion.button>
+
+      <motion.button
+        type="button"
+        className={`toolbar-icon-button reflection-trigger${reflectionActive ? ' is-active' : ''}`}
+        aria-label={reflectionActive ? 'End breathing reflection' : 'Breathe with this quote'}
+        title={reflectionActive ? 'End reflection' : 'Breathe with this quote (B)'}
+        onClick={onReflectionToggle}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.84 }}
+      >
+        <Wind aria-hidden />
       </motion.button>
 
       <motion.button

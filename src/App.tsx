@@ -10,6 +10,7 @@ import { InteractiveQuoteCard } from './components/InteractiveQuoteCard'
 import { Toolbar } from './components/Toolbar'
 import { MoodDock } from './components/MoodDock'
 import { SlideshowSettings } from './components/SlideshowSettings'
+import { BreathingRitual } from './components/BreathingRitual'
 import { copyText } from './lib/clipboard'
 import { exportCardAsImage } from './lib/exportCard'
 import { getMoodSoundTitle, MoodSoundEngine } from './lib/moodSound'
@@ -58,6 +59,7 @@ export default function App() {
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [ambientExitVisible, setAmbientExitVisible] = useState(false)
   const [soundEnabled, setSoundEnabled] = useState(false)
+  const [reflectionActive, setReflectionActive] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
   const ambientHideTimer = useRef<number | undefined>(undefined)
   const nativeFullscreenEntered = useRef(false)
@@ -127,6 +129,11 @@ export default function App() {
     const started = await engine.start(mood)
     setSoundEnabled(started)
   }, [mood, soundEnabled])
+
+  const toggleReflection = useCallback(() => {
+    setSettingsOpen(false)
+    setReflectionActive((current) => !current)
+  }, [])
 
   const revealAmbientExit = useCallback(() => {
     setAmbientExitVisible(true)
@@ -219,18 +226,22 @@ export default function App() {
   }, [isFullscreen, revealAmbientExit])
 
   useEffect(() => {
-    if (!slideshow.enabled || settingsOpen) return
+    if (!slideshow.enabled || settingsOpen || reflectionActive) return
 
     const timer = window.setInterval(() => {
       if (document.visibilityState === 'visible') nextQuote(-1)
     }, slideshow.interval)
 
     return () => window.clearInterval(timer)
-  }, [slideshow.enabled, slideshow.interval, settingsOpen, nextQuote])
+  }, [slideshow.enabled, slideshow.interval, settingsOpen, reflectionActive, nextQuote])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (['INPUT', 'TEXTAREA'].includes((event.target as HTMLElement).tagName)) return
+      if (reflectionActive) {
+        if (event.key === 'Escape' || event.key.toLowerCase() === 'b') setReflectionActive(false)
+        return
+      }
       if (event.key === 'Escape' && isFullscreen) {
         toggleFullscreen()
       } else if (event.key === 'ArrowRight' || event.key === ' ') {
@@ -248,17 +259,19 @@ export default function App() {
         toggleFullscreen()
       } else if (event.key.toLowerCase() === 'm' && !event.metaKey && !event.ctrlKey) {
         void toggleSound()
+      } else if (event.key.toLowerCase() === 'b' && !event.metaKey && !event.ctrlKey) {
+        toggleReflection()
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [nextQuote, handleMoodChange, handleCopy, handleExport, isFullscreen, toggleFullscreen, toggleSound])
+  }, [nextQuote, handleMoodChange, handleCopy, handleExport, isFullscreen, reflectionActive, toggleFullscreen, toggleSound, toggleReflection])
 
   const activeMood = MOODS.find((item) => item.id === mood) ?? MOODS[0]
 
   return (
-    <div className={`app-shell mood-${mood}${isFullscreen ? ' is-ambient' : ''}${ambientExitVisible ? ' ambient-exit-visible' : ''}`}>
+    <div className={`app-shell mood-${mood}${isFullscreen ? ' is-ambient' : ''}${ambientExitVisible ? ' ambient-exit-visible' : ''}${reflectionActive ? ' is-reflecting' : ''}`}>
       <AmbientBackground mood={mood} />
 
       <motion.header
@@ -311,6 +324,8 @@ export default function App() {
         soundEnabled={soundEnabled}
         soundTitle={getMoodSoundTitle(mood)}
         onSoundToggle={() => void toggleSound()}
+        reflectionActive={reflectionActive}
+        onReflectionToggle={toggleReflection}
       />
 
       <SlideshowSettings
@@ -326,6 +341,14 @@ export default function App() {
       <div className="key-hint" aria-hidden>
         <span>← →</span> move through words
       </div>
+
+      <BreathingRitual
+        key={`${quote.id}-${reflectionActive ? 'open' : 'closed'}`}
+        open={reflectionActive}
+        quote={quote}
+        mood={activeMood}
+        onClose={() => setReflectionActive(false)}
+      />
 
       <AnimatePresence>
         {isFullscreen && ambientExitVisible ? (
