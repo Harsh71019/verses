@@ -10159,612 +10159,1314 @@
   },
   {
     "id": "revenge-094",
+    "quote": "They mistook my silence for surrender. I was measuring the distance.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-095",
+    "quote": "I did not return for closure. I returned as the consequence.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-096",
+    "quote": "Your doubt was useful. It taught me exactly where to aim.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-097",
+    "quote": "The version of me you broke no longer answers to that name.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-098",
+    "quote": "I buried the need for your approval. Nothing else could stop me.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-099",
+    "quote": "You closed the door. I bought the building.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-100",
+    "quote": "I kept every insult. They made excellent bricks.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-101",
+    "quote": "No speech. No warning. Just the result arriving on time.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-102",
+    "quote": "I outgrew the battlefield. You are still arguing with my shadow.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-103",
+    "quote": "The comeback was quiet because the ending did not need an announcement.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-104",
+    "quote": "You wanted a reaction. I became unreachable instead.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-105",
+    "quote": "I turned your rejection into a place you can no longer enter.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-106",
+    "quote": "They celebrated too early. I took that personally.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-107",
+    "quote": "Some bridges deserve no repair. Build forward.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-108",
+    "quote": "My absence will explain what my presence was too kind to say.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-109",
+    "quote": "You wanted a reaction. You got an empire instead.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-110",
+    "quote": "I didn't seek revenge. I simply became someone you can neither reach nor afford.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-111",
+    "quote": "Your worst mistake was thinking the quiet ones don't remember.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-112",
+    "quote": "You left me in the ashes. You forgot what rises from them.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-113",
+    "quote": "You wanted to watch me fail. Now you have to pay admission to watch me succeed.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-114",
+    "quote": "I didn't lose you. You lost the privilege of front-row seats to my evolution.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-115",
+    "quote": "You were counting my flaws while I was multiplying my discipline.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-116",
+    "quote": "I don't hold grudges. Grudges are for people who intend to remain on the same level.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-117",
+    "quote": "You counted me out because math was never your strongest subject.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-118",
+    "quote": "I didn't leave because I was defeated. I left because the room was too small for what I was becoming.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-119",
+    "quote": "You threw stones at my foundation. I used every single one to build the tower.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-120",
+    "quote": "I stopped arguing the day I realized my trophies would do all the talking.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-121",
+    "quote": "The distance between who I was and who I am now is measured in your regrets.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-122",
+    "quote": "You wanted me to break. Thank you for eliminating every ounce of my hesitation.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-123",
+    "quote": "I don't need to ruin your name. Your character will take care of that for me.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-124",
+    "quote": "Work in the shadows until the brilliance of your arrival blinds everyone who doubted you.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-125",
+    "quote": "They wanted an explanation. I gave them a demonstration.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-126",
+    "quote": "I remembered every door you shut in my face. Then I went and bought the entire skyline.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-127",
+    "quote": "Never interrupt a person who is quietly outworking every rumor you ever spread.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-128",
+    "quote": "You thought you had the last word. You forgot who holds the pen.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-129",
+    "quote": "The sweetest victory is when the critics are forced to study your playbook.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-130",
+    "quote": "You laughed when I planted the seeds. Don't show up asking for shade during the harvest.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-131",
+    "quote": "I took every dismissal, wrapped it in cold discipline, and turned it into an empire.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-132",
+    "quote": "I don't compete with people sitting in the cheap seats.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-133",
+    "quote": "You thought I was gone. I was just sharpening the blade in total darkness.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-134",
+    "quote": "They whispered behind my back because they couldn't stand what was happening in front of them.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-135",
+    "quote": "The hardest blow you can deliver to a doubter is effortless, undeniable excellence.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-136",
+    "quote": "I didn't get lucky. I worked through every hour you spent gossiping about my odds.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-137",
+    "quote": "You gave me the cold shoulder. I built a fire that will keep me warm forever.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-138",
+    "quote": "I took your rejection and minted it into the highest currency I own.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-139",
+    "quote": "Forgiveness is between you and your conscience. Access to my life is permanently denied.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-140",
+    "quote": "Do not look for me where you left me. That version of me starved so this one could rule.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-141",
+    "quote": "You wanted to see me crumble. Sorry to disappoint your expectations.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-142",
+    "quote": "My silence was not confusion. It was precision.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-143",
+    "quote": "You bet on my collapse. I hope you kept the receipt.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-144",
+    "quote": "I don't need closure from someone whose opinion closed its value months ago.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-145",
+    "quote": "You celebrated my struggle like it was the finale. It was only the prologue.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-146",
+    "quote": "I became the storm you prayed would pass over your head.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-147",
+    "quote": "The best form of defiance is continuing to rise without glancing down.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-148",
+    "quote": "You thought I drowned. You forgot I learned how to breathe under pressure.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-149",
+    "quote": "I didn't come this far to only come this far and let your doubts be right.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-150",
+    "quote": "They said I changed. I didn't work this relentlessly to stay the person you could manipulate.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-151",
+    "quote": "You locked the gate. I learned how to fly.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-152",
+    "quote": "Treat their mockery as free marketing for your inevitable takeover.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-153",
+    "quote": "I didn't retaliate. Retaliation implies you're still on my radar.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-154",
+    "quote": "Keep talking about me. Every sentence costs you energy you'll never recover.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-155",
+    "quote": "You wanted a rivalry. I didn't even know we were playing the same game.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-156",
+    "quote": "Your disrespect was the loudest, clearest alarm clock of my life.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-157",
+    "quote": "I don't get even. Getting even means lowering myself back down to your coordinates.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-158",
+    "quote": "You wanted an apology for outgrowing the room. Here is my empty seat instead.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-159",
+    "quote": "The greatest revenge is total indifference coupled with unquestionable dominance.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-160",
+    "quote": "You called it luck. The 4:00 AM alarm calls it discipline.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-161",
+    "quote": "I stopped caring about their whispers the moment I saw their results.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-162",
+    "quote": "They wanted to break my spirit; they only succeeded in breaking my patience with small minds.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-163",
+    "quote": "When they try to bury you, remind them you are a root, not a corpse.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-164",
+    "quote": "I made peace with being the villain in the story of anyone who couldn't control me.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-165",
+    "quote": "The strongest comeback requires neither an announcement nor an apology—only the score.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-166",
+    "quote": "You had your season of laughing. Now sit down and watch mine.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-167",
+    "quote": "I didn't survive everything that tried to kill me just to be timid about who I am.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-168",
+    "quote": "They wanted to see if I could swim without them. Turns out I was the tide.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-169",
+    "quote": "I turned every insult you ever hurled into high-octane rocket fuel.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-170",
+    "quote": "You thought I was soft because I was kind. Now you know the difference.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-171",
+    "quote": "I don't look back at the people who let go of the rope. I only look at the summit.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-172",
+    "quote": "The fire inside me burned away the need for your validation.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-173",
+    "quote": "Your doubt was free tuition at the school of relentless ambition.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-174",
+    "quote": "Outgrow the applause of people who wouldn't bleed with you in the trenches.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-175",
+    "quote": "A lion doesn't lose sleep over the opinion of sheep.",
+    "author": "George R.R. Martin",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-176",
+    "quote": "They wanted to see how much I could take. Now they get to see how much I can give.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-177",
+    "quote": "The stone the builders rejected didn't just become the cornerstone—it built the castle.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-178",
+    "quote": "I didn't get revenge. Time, discipline, and gravity took care of it for me.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-179",
+    "quote": "You tried to dim my light because it exposed your darkness.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-180",
+    "quote": "I don't hold hate. Hate occupies space where my next victory is supposed to live.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-181",
+    "quote": "You thought my chapter was over. You forgot I'm the author of this entire book.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-182",
+    "quote": "They prayed for rain on my parade. I brought the lightning.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-183",
+    "quote": "Never show your cards until you're laying down the winning hand.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-184",
+    "quote": "I don't ask for a seat at tables built by people who doubted my worth.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-185",
+    "quote": "You wanted to see me broken in public. You'll only ever see me crowned in private.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-186",
+    "quote": "The greatest triumph is looking into the eyes of your doubters and realizing you no longer care.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-187",
+    "quote": "My success isn't meant to spite you. But if it hurts, that's on your conscience.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-188",
+    "quote": "I traded your drama for my destiny.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-189",
+    "quote": "You were a detour on the road to who I was always meant to be.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-190",
+    "quote": "The underdog is only an underdog until the first round ends.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-191",
+    "quote": "I outlasted every prediction they made against me.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-192",
+    "quote": "Do not confuse my restraint for weakness. Restraint is the weapon of the dangerous.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-193",
+    "quote": "You wrote me off in pencil. I answered back in stone.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-194",
+    "quote": "I never forgot the names of those who cheered for my fall. I just chose to build higher.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-195",
+    "quote": "They gave up on me. It was the greatest favor anyone ever did.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-196",
+    "quote": "You wanted to watch me drown. Enjoy the view from the shoreline.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-197",
+    "quote": "I don't chase respect from people who haven't earned their own.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-198",
+    "quote": "You thought I was quiet because I had nothing to say. I was simply executing the plan.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-199",
+    "quote": "There is no louder comeback than complete, unapologetic success.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-200",
+    "quote": "I don't look down from the mountain to gloat; the view from here is too beautiful to waste.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-201",
+    "quote": "You wanted to be my adversary. You ended up as my catalyst.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-202",
+    "quote": "I eliminated the fear of failure the day I survived the worst you could throw at me.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-203",
+    "quote": "The comeback didn't come to make friends. It came to set the record straight.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-204",
+    "quote": "I took everything they said I lacked and forged it into my greatest asset.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-205",
+    "quote": "When you stop reacting to their noise, you take away their only source of power.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-206",
+    "quote": "You wanted a confession of defeat. I gave you a masterclass in resilience.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-207",
+    "quote": "I survived the winter you wished on me. Now welcome to my summer.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-208",
+    "quote": "The greatest response to a closed door is owning the keys to the entire city.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-209",
+    "quote": "You thought you broke my stride. You only taught me how to sprint.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-210",
+    "quote": "I didn't come back to negotiate. The scoreboard is final.",
+    "author": "Verse — Original",
+    "category": "revenge"
+  },
+  {
+    "id": "revenge-211",
     "quote": "Supreme excellence consists of breaking the enemy's resistance without fighting.",
     "author": "Sun Tzu",
     "category": "revenge"
   },
   {
-    "id": "revenge-095",
+    "id": "revenge-212",
     "quote": "To be successful you need friends and to be very successful you need enemies.",
     "author": "Sidney Sheldon",
     "category": "revenge"
   },
   {
-    "id": "revenge-096",
+    "id": "revenge-213",
     "quote": "Doubt kills more dreams than failure ever will.",
     "author": "Suzy Kassem",
     "category": "revenge"
   },
   {
-    "id": "revenge-097",
+    "id": "revenge-214",
     "quote": "The thermometer of success is merely the jealousy of the malcontents.",
     "author": "Salvador Dali",
     "category": "revenge"
   },
   {
-    "id": "revenge-098",
+    "id": "revenge-215",
     "quote": "When emerging from humble beginnings, those around you tend to underestimate your authenticity because they knew you before you were 'somebody'.",
     "author": "Criss Jami",
     "category": "revenge"
   },
   {
-    "id": "revenge-099",
+    "id": "revenge-216",
     "quote": "Never run from the enemy, tackle them",
     "author": "Victoria Addino",
     "category": "revenge"
   },
   {
-    "id": "revenge-100",
+    "id": "revenge-217",
     "quote": "Never feel shame for trying and failing for he who has never failed is he who has never tried.",
     "author": "Og Mandino",
     "category": "revenge"
   },
   {
-    "id": "revenge-101",
+    "id": "revenge-218",
     "quote": "Don't think that just because you made it to the next level that the haters and naysayers disappear. Remember, new levels bring new devils.",
     "author": "Steve Maraboli",
     "category": "revenge"
   },
   {
-    "id": "revenge-102",
+    "id": "revenge-219",
     "quote": "Success is the best revenge.",
     "author": "Kanye West",
     "category": "revenge"
   },
   {
-    "id": "revenge-103",
+    "id": "revenge-220",
     "quote": "That is why enemies can be great motivators. They serve as fuel for your fire.",
     "author": "Simon Zingerman",
     "category": "revenge"
   },
   {
-    "id": "revenge-104",
+    "id": "revenge-221",
     "quote": "Never underestimate the power you have to take your life in a new direction.",
     "author": "Germany Kent",
     "category": "revenge"
   },
   {
-    "id": "revenge-105",
+    "id": "revenge-222",
     "quote": "Erase self-doubt by working to build your strengths instead of focusing on your weaknesses.",
     "author": "Rodolfo Costa",
     "category": "revenge"
   },
   {
-    "id": "revenge-106",
+    "id": "revenge-223",
     "quote": "It’s a shame how much artists have to bleed for people to enjoy their work.",
     "author": "Solange nicole",
     "category": "revenge"
   },
   {
-    "id": "revenge-107",
+    "id": "revenge-224",
     "quote": "Do not look down with disdain on what Christ spent so much to achieve for you.",
     "author": "Jaachynma N.E. Agu",
     "category": "revenge"
   },
   {
-    "id": "revenge-108",
+    "id": "revenge-225",
     "quote": "Result of HARDWORK Is Neither Friends Nor Enemy,",
     "author": "Sujit Lalwani",
     "category": "revenge"
   },
   {
-    "id": "revenge-109",
+    "id": "revenge-226",
     "quote": "Man is like a bride unto God. God is jealous when man veers away from Him.",
     "author": "Jaachynma N.E. Agu",
     "category": "revenge"
   },
   {
-    "id": "revenge-110",
+    "id": "revenge-227",
     "quote": "Share your aspirations only with those who will support you, not those who will respond with doubt or lack of interest.",
     "author": "Steve Backley",
     "category": "revenge"
   },
   {
-    "id": "revenge-111",
+    "id": "revenge-228",
     "quote": "Never think that you cannot rise above your problems, always think your problems cannot rise above you and you will overcome them.",
     "author": "Apoorve Dubey",
     "category": "revenge"
   },
   {
-    "id": "revenge-112",
+    "id": "revenge-229",
     "quote": "Fear kills more dreams than failure ever will. Doubt kills more dreams than failure ever will.",
     "author": "Suzy Kassem",
     "category": "revenge"
   },
   {
-    "id": "revenge-113",
+    "id": "revenge-230",
     "quote": "Love with the motives does not have the success and embraces shame, and sorry.",
     "author": "Ehsan Sehgal",
     "category": "revenge"
   },
   {
-    "id": "revenge-114",
+    "id": "revenge-231",
     "quote": "Some people are each way more hurt by their worst enemy’s success than they were hurt by their then best friend’s death.",
     "author": "Mokokoma Mokhonoana",
     "category": "revenge"
   },
   {
-    "id": "revenge-115",
+    "id": "revenge-232",
     "quote": "Fear kills more dreams than failure ever will. Doubt and fear are the two villains of success.",
     "author": "Suzy Kassem",
     "category": "revenge"
   },
   {
-    "id": "revenge-116",
+    "id": "revenge-233",
     "quote": "Our failures are way less likely than our successes to be ignored by our enemies.",
     "author": "Mokokoma Mokhonoana",
     "category": "revenge"
   },
   {
-    "id": "revenge-117",
+    "id": "revenge-234",
     "quote": "They say getting thin is the best revenge. Success if much better.",
     "author": "Oprah Winfrey",
     "category": "revenge"
   },
   {
-    "id": "revenge-118",
+    "id": "revenge-235",
     "quote": "The haters just don't get it...",
     "author": "Steve Maraboli",
     "category": "revenge"
   },
   {
-    "id": "revenge-119",
+    "id": "revenge-236",
     "quote": "Confronting your enemy in anger feeds your ego, but diminishes your chance of success.",
     "author": "Shon Mehta",
     "category": "revenge"
   },
   {
-    "id": "revenge-120",
+    "id": "revenge-237",
     "quote": "I’ve realized people can live in a world they’ve personally constructed through a distorted lens of guilt and shame, whether they deserve it or not.",
     "author": "Kristy McMorlan",
     "category": "revenge"
   },
   {
-    "id": "revenge-121",
+    "id": "revenge-238",
     "quote": "I feel bad for you . If you only feel better about yourself when you body shame others . When you are oppressing others or you others are failing.",
     "author": "De philosopher DJ Kyos",
     "category": "revenge"
   },
   {
-    "id": "revenge-122",
+    "id": "revenge-239",
     "quote": "Be armed with purpose, persistence and intention and the enemy called defeat will choose another to battle.",
     "author": "Daisy Gallagher",
     "category": "revenge"
   },
   {
-    "id": "revenge-123",
+    "id": "revenge-240",
     "quote": "In life there is only one enemy who can stop your dreams - you!",
     "author": "Daisy Gallagher",
     "category": "revenge"
   },
   {
-    "id": "revenge-124",
+    "id": "revenge-241",
     "quote": "The biggest mistake some people make is underestimating their own ability.",
     "author": "Colleen Ferrary Bader",
     "category": "revenge"
   },
   {
-    "id": "revenge-125",
+    "id": "revenge-242",
     "quote": "Never underestimate or fail to appreciate the power of a good run.",
     "author": "Toni Sorenson",
     "category": "revenge"
   },
   {
-    "id": "revenge-126",
+    "id": "revenge-243",
     "quote": "I went home later that night, thinking about everything. I wanted revenge for my cousin, but what did I know about revenge?",
     "author": "Russell Vann",
     "category": "revenge"
   },
   {
-    "id": "revenge-127",
+    "id": "revenge-244",
     "quote": "Success! Success! The enemy of progress!",
     "author": "Edgar Degas",
     "category": "revenge"
   },
   {
-    "id": "revenge-128",
+    "id": "revenge-245",
     "quote": "You have enemies the moment you have success. Our job is finding a way to do business with them. Everyone wants something.",
     "author": "J.M. Lawler",
     "category": "revenge"
   },
   {
-    "id": "revenge-129",
+    "id": "revenge-246",
     "quote": "I dont celebrate any friendship that was build on hate, because we share the common enemy.",
     "author": "De philosopher DJ Kyos",
     "category": "revenge"
   },
   {
-    "id": "revenge-130",
+    "id": "revenge-247",
     "quote": "If you have influence on other people. Dont be influenced by their hate, money, jealousy, anger and popularity .",
     "author": "De philosopher DJ Kyos",
     "category": "revenge"
   },
   {
-    "id": "revenge-131",
+    "id": "revenge-248",
     "quote": "Most people overestimate what they can do in a year and they underestimate what they can do in two or three decades.",
     "author": "Tony Robbins",
     "category": "revenge"
   },
   {
-    "id": "revenge-132",
+    "id": "revenge-249",
     "quote": "Rise above the daily stumbles and place your focus on your vision. When you identify your desires commit to unlimited success",
     "author": "Bluenscottish",
     "category": "revenge"
   },
   {
-    "id": "revenge-133",
+    "id": "revenge-250",
     "quote": "My only regrets are the moments when i doubted myself and took the safe route. Life is too short to waste time being unhappy.",
     "author": "Dan Howell",
     "category": "revenge"
   },
   {
-    "id": "revenge-134",
+    "id": "revenge-251",
     "quote": "The supreme happiness of life is the conviction that we are loved; loved for ourselves—say rather, loved in spite of ourselves.",
     "author": "Victor Hugo",
     "category": "revenge"
   },
   {
-    "id": "revenge-135",
+    "id": "revenge-252",
     "quote": "The dead don't desire revenge, but the happiness of the livng. To dirty your small hands would bring joy to no one.",
     "author": "Watsuki Nobuhiro",
     "category": "revenge"
   },
   {
-    "id": "revenge-136",
+    "id": "revenge-253",
     "quote": "Happiness is the best revenge",
     "author": "Jacki Kane",
     "category": "revenge"
   },
   {
-    "id": "revenge-137",
+    "id": "revenge-254",
     "quote": "The devil's happy when the critics run you off.",
     "author": "Criss Jami",
     "category": "revenge"
   },
   {
-    "id": "revenge-138",
+    "id": "revenge-255",
     "quote": "There is no duty we so much underrate as the duty of being happy.",
     "author": "Robert Louis Stevenson",
     "category": "revenge"
   },
   {
-    "id": "revenge-139",
+    "id": "revenge-256",
     "quote": "Merry hearts are vulnerable to death, don't be over-joyed to the state of oblivion, lest the enemy poison your meal.",
     "author": "Michael Bassey Johnson",
     "category": "revenge"
   },
   {
-    "id": "revenge-140",
+    "id": "revenge-257",
     "quote": "Jealous of the crazy gay kid. That doesn't sound right.",
     "author": "John Corey Whaley",
     "category": "revenge"
   },
   {
-    "id": "revenge-141",
+    "id": "revenge-258",
     "quote": "Don’t give your enemies that pleasure to fulfil their wishes about you. If your enemies are working so hard to see you unhappy, BE HAPPY!",
     "author": "Endale Edith",
     "category": "revenge"
   },
   {
-    "id": "revenge-142",
+    "id": "revenge-259",
     "quote": "Do not allow haters to ruin your happiness.",
     "author": "Gift Gugu Mona",
     "category": "revenge"
   },
   {
-    "id": "revenge-143",
+    "id": "revenge-260",
     "quote": "Excessive self-criticism is a bad habit and extraordinarily self-destructive. Don't be your own worst enemy!",
     "author": "Bryant McGill",
     "category": "revenge"
   },
   {
-    "id": "revenge-144",
+    "id": "revenge-261",
     "quote": "Entrepreneurs often underestimate costs and overestimate rewards. But the fact that they estimate & still take action sets them apart from peers.",
     "author": "Ryan Lilly",
     "category": "revenge"
   },
   {
-    "id": "revenge-145",
+    "id": "revenge-262",
     "quote": "Doubt is an acceptable risk for happiness.",
     "author": "David Levithan",
     "category": "revenge"
   },
   {
-    "id": "revenge-146",
+    "id": "revenge-263",
     "quote": "Never doubt that a small group of thoughtful, committed, citizens can change the world. Indeed, it is the only thing that ever has.",
     "author": "Margaret Mead",
     "category": "revenge"
   },
   {
-    "id": "revenge-147",
+    "id": "revenge-264",
     "quote": "Do I not destroy my enemies when I make them my friends?",
     "author": "Abraham Lincoln",
     "category": "revenge"
   },
   {
-    "id": "revenge-148",
+    "id": "revenge-265",
     "quote": "To choose doubt as a philosophy of life is akin to choosing immobility as a means of transportation.",
     "author": "Yann Martel",
     "category": "revenge"
   },
   {
-    "id": "revenge-149",
+    "id": "revenge-266",
     "quote": "Don't be afraid of enemies who attack you. Be afraid of the friends who flatter you.",
     "author": "Dale Carnegie",
     "category": "revenge"
   },
   {
-    "id": "revenge-150",
+    "id": "revenge-267",
     "quote": "When in a relationship, a real man doesn't make his woman jealous of others, he makes others jealous of his woman.",
     "author": "Steve Maraboli",
     "category": "revenge"
   },
   {
-    "id": "revenge-151",
+    "id": "revenge-268",
     "quote": "When you hold a grudge, you want someone else’s sorrow to reflect your level of hurt but the two rarely meet.",
     "author": "Steve Maraboli",
     "category": "revenge"
   },
   {
-    "id": "revenge-152",
+    "id": "revenge-269",
     "quote": "We demand rigidly defined areas of doubt and uncertainty!",
     "author": "Douglas Adams",
     "category": "revenge"
   },
   {
-    "id": "revenge-153",
+    "id": "revenge-270",
     "quote": "Too often we underestimate the power of a touch, a smile, a kind word, a",
     "author": "Leo F. Buscaglia",
     "category": "revenge"
   },
   {
-    "id": "revenge-154",
+    "id": "revenge-271",
     "quote": "Never respond to an angry person with a fiery comeback, even if he deserves it...Don't allow his anger to become your anger.",
     "author": "Bohdi Sanders",
     "category": "revenge"
   },
   {
-    "id": "revenge-155",
+    "id": "revenge-272",
     "quote": "We should forgive our enemies, but not before they are hanged",
     "author": "Heinrich Heine",
     "category": "revenge"
   },
   {
-    "id": "revenge-156",
+    "id": "revenge-273",
     "quote": "Man starts over again everyday, in spite of all he knows, against all he knows.",
     "author": "Emil Cioran",
     "category": "revenge"
   },
   {
-    "id": "revenge-157",
+    "id": "revenge-274",
     "quote": "I do not forget any good deed done to me & I do not carry a grudge for a bad one.",
     "author": "Viktor E. Frankl",
     "category": "revenge"
   },
   {
-    "id": "revenge-158",
+    "id": "revenge-275",
     "quote": "It's such a shame to waste time. We always think we have so much of it.",
     "author": "Mitch Albom",
     "category": "revenge"
   },
   {
-    "id": "revenge-159",
+    "id": "revenge-276",
     "quote": "Most people overestimate what they can do in one year and underestimate what they can do in ten years.",
     "author": "Bill Gates",
     "category": "revenge"
   },
   {
-    "id": "revenge-160",
+    "id": "revenge-277",
     "quote": "There is love of course. And then there's life, its enemy.",
     "author": "Jean Anouilh",
     "category": "revenge"
   },
   {
-    "id": "revenge-161",
+    "id": "revenge-278",
     "quote": "Self-consciousness is the enemy of all art, be it acting, writing, painting, or living itself, which is the greatest art of all.",
     "author": "Ray Bradbury",
     "category": "revenge"
   },
   {
-    "id": "revenge-162",
+    "id": "revenge-279",
     "quote": "In my many years I have come to a conclusion that one useless man is a shame, two is a law firm, and three or more is a congress.",
     "author": "Peter Stone",
     "category": "revenge"
   },
   {
-    "id": "revenge-163",
+    "id": "revenge-280",
     "quote": "I want to drag knives over my skin, just to feel something other than shame, but I'm not even brave enough for that",
     "author": "Paula Hawkins",
     "category": "revenge"
   },
   {
-    "id": "revenge-164",
+    "id": "revenge-281",
     "quote": "The life of the enemy . Whoever lives for the sake of combating an enemy has an interest in the enemy's staying alive.",
     "author": "Friedrich Wilhelm Nietzsche",
     "category": "revenge"
   },
   {
-    "id": "revenge-165",
+    "id": "revenge-282",
     "quote": "I choose my friends for their good looks, my acquaintances for their good characters, and my enemies for their good intellects.",
     "author": "Oscar Wilde",
     "category": "revenge"
   },
   {
-    "id": "revenge-166",
+    "id": "revenge-283",
     "quote": "When in doubt, be ridiculous.",
     "author": "Sherwood Smith",
     "category": "revenge"
   },
   {
-    "id": "revenge-167",
+    "id": "revenge-284",
     "quote": "Long hair will make thee look dreafully to thine enemies, and manly to thy",
     "author": "Thomas Dekker",
     "category": "revenge"
   },
   {
-    "id": "revenge-168",
+    "id": "revenge-285",
     "quote": "When jealousy surges through thy heart",
     "author": "Anna Livia Plurabelle",
     "category": "revenge"
   },
   {
-    "id": "revenge-169",
+    "id": "revenge-286",
     "quote": "When the sky gets jealous of water, color flows.",
     "author": "Anthony T. Hincks",
     "category": "revenge"
   },
   {
-    "id": "revenge-170",
+    "id": "revenge-287",
     "quote": "Never underestimate your worth your beauty or your strength. You are everything you can imagine and so much more.",
     "author": "Melody  Lee",
     "category": "revenge"
   },
   {
-    "id": "revenge-171",
+    "id": "revenge-288",
     "quote": "It’s an enemy that I can’t allow to wound me a second time. It’s already done enough damage: most of it hidden far from the surface.",
     "author": "Andrea Pirlo",
     "category": "revenge"
   },
   {
-    "id": "revenge-172",
+    "id": "revenge-289",
     "quote": "I destroy my enemies when I make them my friends.",
     "author": "Abraham Lincoln",
     "category": "revenge"
   },
   {
-    "id": "revenge-173",
+    "id": "revenge-290",
     "quote": "When you doubt your power, you give power to your doubt.",
     "author": "Honore de Balzac",
     "category": "revenge"
   },
   {
-    "id": "revenge-174",
+    "id": "revenge-291",
     "quote": "You have enemies? Good. That means you've stood up for something, sometime in your life.",
     "author": "Winston Churchill",
     "category": "revenge"
   },
   {
-    "id": "revenge-175",
+    "id": "revenge-292",
     "quote": "Your worst enemy cannot harm you as much as your own unguarded thoughts.",
     "author": "Buddha",
     "category": "revenge"
   },
   {
-    "id": "revenge-176",
+    "id": "revenge-293",
     "quote": "There is no duty we so underrate as the duty of being happy. By being happy we sow anonymous benefits upon the world.",
     "author": "Robert Louis Stevenson",
     "category": "revenge"
   },
   {
-    "id": "revenge-177",
+    "id": "revenge-294",
     "quote": "Never doubt that a small group of thoughtful, committed people can change the world. Indeed. It is the only thing that ever has.",
     "author": "Margaret Mead",
     "category": "revenge"
   },
   {
-    "id": "revenge-178",
+    "id": "revenge-295",
     "quote": "You cannot make yourself feel something you do not feel, but you can make yourself do right in spite of your feelings.",
     "author": "Pearl Buck",
     "category": "revenge"
   },
   {
-    "id": "revenge-179",
+    "id": "revenge-296",
     "quote": "Love is the only force capable of transforming an enemy into friend.",
     "author": "Martin Luther King, Jr.",
     "category": "revenge"
   },
   {
-    "id": "revenge-180",
+    "id": "revenge-297",
     "quote": "People may doubt what you say, but they will believe what you do.",
     "author": "Lewis Cass",
     "category": "revenge"
   },
   {
-    "id": "revenge-181",
+    "id": "revenge-298",
     "quote": "When in doubt, tell the truth.",
     "author": "Mark Twain",
     "category": "revenge"
   },
   {
-    "id": "revenge-182",
+    "id": "revenge-299",
     "quote": "When there is no enemy within, the enemies outside cannot hurt you.",
     "author": "African proverb",
     "category": "revenge"
   },
   {
-    "id": "revenge-183",
+    "id": "revenge-300",
     "quote": "Chaos and Order are not enemies, only opposites.",
     "author": "Richard Garriott",
     "category": "revenge"
   },
   {
-    "id": "revenge-184",
+    "id": "revenge-301",
     "quote": "There are two ways to slide easily through life: to believe everything or to doubt everything; both ways save us from thinking.",
     "author": "Alfred Korzybski",
     "category": "revenge"
   },
   {
-    "id": "revenge-185",
+    "id": "revenge-302",
     "quote": "Truth is generally the best vindication against slander.",
     "author": "Abraham Lincoln",
     "category": "revenge"
   },
   {
-    "id": "revenge-186",
+    "id": "revenge-303",
     "quote": "You don't play for revenge. You play for respect and pride",
     "author": "Rahul Dravid",
     "category": "revenge"
   },
   {
-    "id": "revenge-187",
+    "id": "revenge-304",
     "quote": "The worst enemy to creativity is self-doubt.",
     "author": "Sylvia Plath",
     "category": "revenge"
   },
   {
-    "id": "revenge-188",
+    "id": "revenge-305",
     "quote": "You Sceptics, who dismiss the evidence of the senses – do you act any differently? Which one of you ever went to the mill when you were in need of a bath?",
     "author": "Epictetus",
     "category": "revenge"
   },
   {
-    "id": "revenge-189",
+    "id": "revenge-306",
     "quote": "You’re subject to sorrow, fear, jealousy, anger and inconsistency. That’s the real reason you should admit that you are not wise.",
     "author": "Epictetus",
     "category": "revenge"
   },
   {
-    "id": "revenge-190",
+    "id": "revenge-307",
     "quote": "No doubt you have seen dogs playing with, and fawning before, each other, and thought, ‘Nothing could be friendlier.’ But just throw some meat in the middle, and then you’ll know what friendship amounts to.",
     "author": "Epictetus",
     "category": "revenge"
   },
   {
-    "id": "revenge-191",
+    "id": "revenge-308",
     "quote": "What makes for freedom and fluency in the practice of writing? Knowledge of how to write. The same goes for the practice of playing an instrument. It follows that, in the conduct of life, there must be a science to living well.",
     "author": "Epictetus",
     "category": "revenge"
   },
   {
-    "id": "revenge-192",
+    "id": "revenge-309",
     "quote": "If I admire the interpretation [of a philosophical treatise], I have turned into a literary critic instead of a philosopher, the only difference being that, instead of Homer, I’m interpreting Chrysippus.",
     "author": "Epictetus",
     "category": "revenge"
   },
   {
-    "id": "revenge-193",
+    "id": "revenge-310",
     "quote": "It is our own opinions that disturb us. Take away these opinions then, and resolve to dismiss your judgment about an act as if it were something grievous, and your anger is gone.",
     "author": "Marcus Aurelius",
     "category": "revenge"
   },
   {
-    "id": "revenge-194",
+    "id": "revenge-311",
     "quote": "Never, never, never, never, in nothing great or small, large or petty, never give in except to convictions of honour and good sense. Never yield to force; never yield to the apparently overwhelming might of the enemy.",
     "author": "Winston Churchill, British Prime Minister.",
     "category": "revenge"
   },
   {
-    "id": "revenge-195",
+    "id": "revenge-312",
     "quote": "Openly share and talk to people about your idea. Use their lack of interest or doubt to fuel your motivation to make it happen.",
     "author": "Todd Garland, founder of BuySellAds",
     "category": "revenge"
@@ -13696,155 +14398,5 @@
     "quote": "I learned not to worry so much about the outcome, but to concentrate on the step I was on and to try to do it as perfectly as I could when I was doing it.",
     "author": "Steve Wozniak, Co-Founder of Apple",
     "category": "focus"
-  },
-  {
-    "id": "revenge-196",
-    "quote": "You killed my father. Prepare to die.",
-    "author": "Inigo Montoya — The Princess Bride",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-197",
-    "quote": "I will have vengeance.",
-    "author": "Maximus — Gladiator",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-198",
-    "quote": "Revenge is a kind of wild justice.",
-    "author": "Francis Bacon",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-199",
-    "quote": "He that studieth revenge keeps his own wounds green.",
-    "author": "Francis Bacon",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-200",
-    "quote": "And if you wrong us, shall we not revenge?",
-    "author": "William Shakespeare — The Merchant of Venice",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-201",
-    "quote": "Cry havoc and let slip the dogs of war.",
-    "author": "William Shakespeare — Julius Caesar",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-202",
-    "quote": "Hell is empty and all the devils are here.",
-    "author": "William Shakespeare — The Tempest",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-203",
-    "quote": "Go ahead, make my day.",
-    "author": "Harry Callahan — Sudden Impact",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-204",
-    "quote": "I will find you, and I will kill you.",
-    "author": "Bryan Mills — Taken",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-205",
-    "quote": "People keep asking if I'm back. Yeah, I'm thinking I'm back.",
-    "author": "John Wick — John Wick",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-206",
-    "quote": "They mistook my silence for surrender. I was measuring the distance.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-207",
-    "quote": "I did not return for closure. I returned as the consequence.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-208",
-    "quote": "Your doubt was useful. It taught me exactly where to aim.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-209",
-    "quote": "The version of me you broke no longer answers to that name.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-210",
-    "quote": "I buried the need for your approval. Nothing else could stop me.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-211",
-    "quote": "You closed the door. I bought the building.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-212",
-    "quote": "I kept every insult. They made excellent bricks.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-213",
-    "quote": "No speech. No warning. Just the result arriving on time.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-214",
-    "quote": "I outgrew the battlefield. You are still arguing with my shadow.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-215",
-    "quote": "The comeback was quiet because the ending did not need an announcement.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-216",
-    "quote": "You wanted a reaction. I became unreachable instead.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-217",
-    "quote": "I turned your rejection into a place you can no longer enter.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-218",
-    "quote": "They celebrated too early. I took that personally.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-219",
-    "quote": "Some bridges deserve no repair. Build forward.",
-    "author": "Verse — Original",
-    "category": "revenge"
-  },
-  {
-    "id": "revenge-220",
-    "quote": "My absence will explain what my presence was too kind to say.",
-    "author": "Verse — Original",
-    "category": "revenge"
   }
 ]

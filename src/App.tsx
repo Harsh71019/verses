@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Minimize2 } from 'lucide-react'
+import { Flame, Minimize2 } from 'lucide-react'
 import quotesData from './data/quotes.json'
 import { MOODS } from './lib/moods'
 import type { MoodId } from './lib/moods'
@@ -16,6 +16,7 @@ import { copyText } from './lib/clipboard'
 import { exportCardAsImage } from './lib/exportCard'
 import { getMoodSoundTitle, MoodSoundEngine } from './lib/moodSound'
 import { loadFavoriteIds, saveFavoriteIds } from './lib/favorites'
+import { getDailyQuote, loadStreak, registerVisit } from './lib/dailyRitual'
 
 const QUOTES = quotesData as Quote[]
 const SLIDESHOW_INTERVALS = [5_000, 15_000, 30_000, 60_000, 300_000] as const
@@ -52,8 +53,9 @@ function randomQuote(mood: MoodId, exceptId?: string) {
 
 export default function App() {
   const [mood, setMood] = useState<MoodId>('drive')
-  const [quote, setQuote] = useState<Quote>(() => randomQuote('drive'))
+  const [quote, setQuote] = useState<Quote>(() => getDailyQuote('drive', getQuotesForMood('drive')))
   const [direction, setDirection] = useState(1)
+  const [streak] = useState(() => registerVisit(loadStreak()))
   const [copied, setCopied] = useState(false)
   const [exporting, setExporting] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
@@ -92,6 +94,11 @@ export default function App() {
     },
     [mood, quote.id],
   )
+
+  const goToToday = useCallback(() => {
+    setDirection(0)
+    setQuote(getDailyQuote(mood, getQuotesForMood(mood)))
+  }, [mood])
 
   const handleCopy = useCallback(async () => {
     const ok = await copyText(`“${quote.quote}” — ${quote.author}`)
@@ -318,6 +325,25 @@ export default function App() {
       >
         <span className="brand-mark">V</span>
         <span className="brand-name">Verse</span>
+        <motion.button
+          type="button"
+          className="streak-badge"
+          onClick={goToToday}
+          title={`${streak.count} day${streak.count === 1 ? '' : 's'} running — tap for today's verse`}
+          aria-label={`${streak.count} day streak. See today's verse.`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.92 }}
+        >
+          <motion.span
+            key={streak.count}
+            initial={{ scale: 1.6, rotate: -12 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 14 }}
+          >
+            <Flame aria-hidden />
+          </motion.span>
+          <span>{streak.count}</span>
+        </motion.button>
       </motion.header>
 
       <MoodDock moods={MOODS} active={mood} onSelect={handleMoodChange} />

@@ -284,6 +284,26 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.32rem;
+  margin-left: 0.15rem;
+  padding: 0.32rem 0.55rem 0.32rem 0.45rem;
+  border: 1px solid var(--mood-control-line);
+  border-radius: 999px;
+  background: var(--mood-control);
+  color: var(--mood-control-ink);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  backdrop-filter: blur(18px) saturate(130%);
+  transition: color 650ms ease, background-color 650ms ease, border-color 650ms ease;
+}
+
+.streak-badge svg { width: 0.85rem; height: 0.85rem; color: var(--mood-accent); }
+
 .mood-dock {
   position: fixed;
   z-index: 40;
