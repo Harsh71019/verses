@@ -1,0 +1,18 @@
+services:
+  verses:
+    image: 'ghcr.io/harsh71019/verses:${VERSES_IMAGE_TAG}'
+    restart: unless-stopped
+    ports:
+      - '3109:80'
+    mem_limit: 512m
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://127.0.0.1/healthz']
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
